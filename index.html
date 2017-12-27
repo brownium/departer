@@ -13,8 +13,8 @@
 			var objectURL = window.URL.createObjectURL(newFile);
 			document.getElementById(playerName).src=objectURL;
 		}
-		
-		function setVolume(volTrol, player) 
+
+		function setVolume(volTrol, player)
 		{
 			//var volume = document.getElementById("volume");
 			//document.getElementById(player).volume = volume.value;
@@ -23,31 +23,31 @@
 		}
 		function startPlay()
 		{
-			document.getElementById('Soprano').play(); 
-			document.getElementById('Alto').play(); 
-			document.getElementById('Alto').currentTime = 			document.getElementById('Soprano').currentTime; 
-			document.getElementById('Tenor').play(); 
-			document.getElementById('Tenor').currentTime = 			document.getElementById('Soprano').currentTime; 
-			document.getElementById('Bass').play(); 
-			document.getElementById('Bass').currentTime = 			document.getElementById('Soprano').currentTime; 
-			document.getElementById('Other').play(); 
-			document.getElementById('Other').currentTime = 			document.getElementById('Soprano').currentTime; 
+			document.getElementById('Soprano').play();
+			document.getElementById('Alto').play();
+			document.getElementById('Alto').currentTime = 			document.getElementById('Soprano').currentTime;
+			document.getElementById('Tenor').play();
+			document.getElementById('Tenor').currentTime = 			document.getElementById('Soprano').currentTime;
+			document.getElementById('Bass').play();
+			document.getElementById('Bass').currentTime = 			document.getElementById('Soprano').currentTime;
+			document.getElementById('Other').play();
+			document.getElementById('Other').currentTime = 			document.getElementById('Soprano').currentTime;
 		}
 		function stopPlay()
 		{
-			document.getElementById('Soprano').pause(); 
-			document.getElementById('Alto').pause(); 
-			document.getElementById('Tenor').pause(); 
-			document.getElementById('Bass').pause(); 
-			document.getElementById('Other').pause(); 
+			document.getElementById('Soprano').pause();
+			document.getElementById('Alto').pause();
+			document.getElementById('Tenor').pause();
+			document.getElementById('Bass').pause();
+			document.getElementById('Other').pause();
 		}
 		function rewind()
 		{
-			document.getElementById('Soprano').currentTime = 0; 
-			document.getElementById('Alto').currentTime = 0; 
-			document.getElementById('Tenor').currentTime = 0; 
-			document.getElementById('Bass').currentTime = 0; 
-			document.getElementById('Other').currentTime = 0; 
+			document.getElementById('Soprano').currentTime = 0;
+			document.getElementById('Alto').currentTime = 0;
+			document.getElementById('Tenor').currentTime = 0;
+			document.getElementById('Bass').currentTime = 0;
+			document.getElementById('Other').currentTime = 0;
 		}
 		function updateProgress(audioFile)
 		{
@@ -60,12 +60,12 @@
 		function setSongPosition()
 		{
 			seekToPercent=document.getElementById("progressBar").value
-			seekToTime = document.getElementById('Soprano').duration * seekToPercent; 
-			document.getElementById('Soprano').currentTime = seekToTime; 
-			document.getElementById('Alto').currentTime = seekToTime; 
-			document.getElementById('Tenor').currentTime = seekToTime; 
-			document.getElementById('Bass').currentTime = seekToTime + document.getElementById('Soprano').currentTime + (document.getElementById('Bass').duration * shift / 10); 
-			document.getElementById('Other').currentTime = seekToTime; 
+			seekToTime = document.getElementById('Soprano').duration * seekToPercent;
+			document.getElementById('Soprano').currentTime = seekToTime;
+			document.getElementById('Alto').currentTime = seekToTime;
+			document.getElementById('Tenor').currentTime = seekToTime;
+			document.getElementById('Bass').currentTime = seekToTime + document.getElementById('Soprano').currentTime + (document.getElementById('Bass').duration * shift / 10);
+			document.getElementById('Other').currentTime = seekToTime;
 		}
 		function shiftTrack(shift, track, sv)
 		{
@@ -74,7 +74,7 @@
 			document.getElementById(track).currentTime = shiftValue;
 			document.getElementById(sv).innerHTML = shift.toFixed(4);
 		}
-		
+
 		function giveBack(){
 			//alert("yuck");
 			newFile = document.getElementById('Tenor').src;
@@ -82,34 +82,34 @@
 			return newFile
 			//return "yellow";
 		}
-		
+
 		function sendIt() {
 		  var xhr = new XMLHttpRequest();
 		  xhr.open("post", "after.php", true);
-		  
+
 		  myBlob = document.getElementById('Tenor');
 
 		  xhr.send(myBlob);
 		}
-		
+
 		function display(songTitle) {
 			songBanner = "Now Playing: " + songTitle
 			document.getElementById('ThisSong').innerHTML=songBanner;
 		}
-		
+
 		function loadSong(songTitle) {
 			//songTitle=document.getElementById('songTitle').value;
 			//for (var i=1;i<9;i++) {
 			  //var player = "player" + i;
-	                  url = "http://octopodmusic.com/MP3/" + songTitle + "/Soprano" + ".mp3";
+	          url = "./MP3/" + songTitle + "/Soprano" + ".mp3";
 			  document.getElementById("Soprano").src=url;
-			  url = "http://octopodmusic.com/MP3/" + songTitle + "/Alto" + ".mp3";
+			  url = "./MP3/" + songTitle + "/Alto" + ".mp3";
 			  document.getElementById("Alto").src=url;
-			  url = "http://octopodmusic.com/MP3/" + songTitle + "/Tenor" + ".mp3";
+			  url = "./MP3/" + songTitle + "/Tenor" + ".mp3";
 			  document.getElementById("Tenor").src=url;
-			  url = "http://octopodmusic.com/MP3/" + songTitle + "/Bass" + ".mp3";
+			  url = "./MP3/" + songTitle + "/Bass" + ".mp3";
 			  document.getElementById("Bass").src=url;
-			  url = "http://octopodmusic.com/MP3/" + songTitle + "/Other" + ".mp3";
+			  url = "./MP3/" + songTitle + "/Other" + ".mp3";
 			  document.getElementById("Other").src=url;
 			//}
 		}
@@ -123,7 +123,7 @@
 		canvas { display: inline-block; background: #202020; box-shadow: 0px 0px 10px blue;}
 		#record.recording { background: red;
 		background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); }
-		
+
 	</style>
 	<style type="text/css" media="screen">
 		div {
@@ -144,7 +144,7 @@
 <div class="container">
     &nbsp;
     <header>
-    <img src="/images/pianoBanner.jpg">
+    <img src="../images/pianoBanner.jpg">
     </header>
     <ul style="text-align: left">
 <!--
