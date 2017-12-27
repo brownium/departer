@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>tata</title>
+<script>
+var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+var myBuffer = null;
+//var context = new AudioContext(); // webkit prefix alert!
+
+function loadDogSound() {
+    var request = new XMLHttpRequest();
+    request.open("GET", "Once_Alto.mp3", true);
+    request.responseType = "arraybuffer";
+    request.onload = function() {
+    context.decodeAudioData( request.response,
+        function(buffer) { myBuffer = buffer; } ); }
+    request.send();
+}
+function playSound() {
+    alert("ere");
+    var sourceNode = audioContext.createBufferSource();
+    sourceNode.buffer = myBuffer;
+    sourceNode.connect( audioContext.destination );
+    sourceNode.start( 0 );
+    alert('done');
+}
+</script>
+</head>
+<body onLoad="loadDogSound()">
+
+<button onclick="playSound()">Play</button>
+
+</body>
+</html>
