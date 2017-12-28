@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Octopod Audio Recorder</title>
+    <style type='text/css'>
+        ul { list-style: none; }
+        #recordingslist audio { display: block; margin-bottom: 10pt; }
+    </style>
+    <style>
+		body { font: 14pt Arial, sans-serif; background: lightgrey; }
+		select { font: 14pt Arial, sans-serif; }
+		body { text-align: center; margin-top: 12pt; margin-left: 10pt;}
+		canvas { display: inline-block; background: #202020; box-shadow: 0px 0px 10px blue;}
+		#record.recording { background: red;
+		background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); }
+		
+	</style>
+	<style type="text/css" media="screen">
+		div {
+        	margin-bottom: 1em;
+        }
+        code {
+	        color: gray;
+        }
+        .slider-width {
+        	width: 400px;
+    	}
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+
+</head>
+<body>
+    <div class="container">
+    &nbsp;
+    <header>
+    <img src="/images/pianoBanner.jpg">
+    </header>
+    <ul style="text-align: left">
+        <li style="display:inline;"><a href="/">Home</a></li>
+        <li style="display:inline;"><a href="/Opportunities.html">Opportunities</a></li>
+        <li style="display:inline;"><a href="/Contacts.html">Contacts</a></li>
+        <li style="display:inline;"><a href="/test.html">Recorder</a></li>
+        <li style="display:inline;"><a href="/profiles/barry.html">Profile</a></li>
+    </ul>
+    <br>
+    <audio id="player1" mediagroup="g1"></audio>
+    <audio id="player2" mediagroup="g1"></audio>
+    <audio id="player3" mediagroup="g1"></audio>
+    <audio id="player4" mediagroup="g1"></audio>
+    <p>
+
+    <p><font style="color:red;">CAUTION!!</font> before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>
+    <p>This works best with recent versions of Google Chrome.  It may work with some versions of Firefox, but it's flakey.</p>
+
+    <button onclick="startRecording(this);document.getElementById('player1').play()">record</button>
+    <button onclick="stopRecording(this);" disabled>stop</button>
+    <button onclick="document.getElementByID('player2').currentTime = 0;document.getElementByID('player2').play();">playmulti</button>
+
+    <h2>Recordings</h2>
+    <ul id="recordingslist"></ul>
+
+    <h2>Log</h2>
+    <pre id="log"></pre>
+
+    <script>
+    
+        // Global Variables
+        playerCount = 0;
+        
+        function __log(e, data) {
+        log.innerHTML += "\n" + e + " " + (data || '');
+        }
+
+        var audio_context;
+        var recorder;
+
+        function startUserMedia(stream) {
+        var input = audio_context.createMediaStreamSource(stream);
+        __log('Media stream created.');
+
+        //input.connect(audio_context.destination);
+        __log('Input connected to audio context destination.');
+
+        recorder = new Recorder(input);
+        __log('Recorder initialised.');
+        }
+
+        function startRecording(button) {
+        recorder && recorder.record();
+        button.disabled = true;
+        button.nextElementSibling.disabled = false;
+        __log('Recording...');
+        }
+
+        function stopRecording(button) {
+        recorder && recorder.stop();
+        button.disabled = true;
+        button.previousElementSibling.disabled = false;
+        __log('Stopped recording.');
+
+        // create WAV download link using audio data blob
+        createDownloadLink();
+
+        recorder.clear();
+        }
+        
+        function createDownloadLink() {
+          playerCount++;
+        recorder && recorder.exportWAV(function(blob) {
+          var url = URL.createObjectURL(blob);
+          var li = document.createElement('li');
+//          var au = document.createElement('audio');
+          var currentPlayer = 'player' + playerCount;
+          var au = document.getElementById(currentPlayer);
+          var hf = document.createElement('a');
+  
+          if (playerCount == 1) {
+            au.controls = true;
+          }
+//          au.id = "player" + playerCount;
+          au.src = url;
+          au.mediaGroup = "groupo";
+          hf.href = url;
+          hf.download = new Date().toISOString() + '.wav';
+          hf.innerHTML = hf.download;
+          var startButton = document.createElement('input');
+          startButton.setAttribute("type", "button");
+          startButton.setAttribute("id", "pbutton" + playerCount);
+          var ButtonVal = "play track " + playerCount
+          startButton.setAttribute("value", ButtonVal);
+          var startButtonAction = "document.getElementById('" + currentPlayer + "').play()";
+          startButton.setAttribute("onClick", startButtonAction);
+          
+          var rewindButton = document.createElement('input');
+          rewindButton.setAttribute("type", "button");
+          rewindButton.setAttribute("id", "rbutton" + playerCount);
+          var ButtonVal = "rewind track " + playerCount;
+          rewindButton.setAttribute("value", ButtonVal);
+          var rewindButtonAction = "document.getElementById(' + au.id + ').currentTime = 0;";
+          rewindButton.setAttribute("onClick", rewindButtonAction);
+          
+          li.id = "list1";
+          li.appendChild(startButton);
+          li.appendChild(rewindButton);
+          li.appendChild(au);
+          li.appendChild(hf);
+          recordingslist.appendChild(li);
+        });
+
+        }
+
+        window.onload = function init() {
+        try {
+          // webkit shim
+          window.AudioContext = window.AudioContext || window.webkitAudioContext;
+          navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+          window.URL = window.URL || window.webkitURL;
+  
+          audio_context = new AudioContext;
+          __log('Audio context set up.');
+          __log('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
+        } catch (e) {
+          alert('No web audio support in this browser!');
+        }
+
+        navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
+          __log('No live audio input: ' + e);
+        });
+        };
+    </script>
+
+    <script src="/recorder.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<html>
+<head>
+
+
+	<title>Octopod Audio Recorder</title>
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<script src="js1/audiodisplay.js"></script>
+	<script src="js1/recorderjs/recorder.js"></script>
+	<script src="js1/main.js"></script>
+	<script type="text/javascript" src="/path/to/si.files.js"></script>
+
+	<script>
+		function goGetter(audioObj, playerName)
+		{
+			newFile=audioObj.files[0];
+			//document.getElementById('ThisSong').innerHTML=newFile.name;
+			var objectURL = window.URL.createObjectURL(newFile);
+			document.getElementById(playerName).src=objectURL;
+		}
+		
+		function setVolume(volTrol, player) 
+		{
+			//var volume = document.getElementById("volume");
+			//document.getElementById(player).volume = volume.value;
+			document.getElementById(player).volume = volTrol;
+			//document.getElementByID(player).volume = volume;
+		}
+		function startPlay()
+		{
+			document.getElementById('player1').play(); 
+			document.getElementById('player2').play(); 
+			document.getElementById('player2').currentTime = 			document.getElementById('player1').currentTime; 
+			document.getElementById('player3').play(); 
+			document.getElementById('player3').currentTime = 			document.getElementById('player1').currentTime; 
+			document.getElementById('player4').play(); 
+			document.getElementById('player4').currentTime = 			document.getElementById('player1').currentTime; 
+			document.getElementById('player5').play(); 
+			document.getElementById('player5').currentTime = 			document.getElementById('player1').currentTime; 
+			document.getElementById('player6').play(); 
+			document.getElementById('player6').currentTime = 			document.getElementById('player1').currentTime; 
+			document.getElementById('player7').play(); 
+			document.getElementById('player7').currentTime = 			document.getElementById('player1').currentTime; 
+			document.getElementById('player8').play();
+			document.getElementById('player8').currentTime = 			document.getElementById('player1').currentTime; 
+		}
+		function stopPlay()
+		{
+			document.getElementById('player1').pause(); 
+			document.getElementById('player2').pause(); 
+			document.getElementById('player3').pause(); 
+			document.getElementById('player4').pause(); 
+			document.getElementById('player5').pause(); 
+			document.getElementById('player6').pause(); 
+			document.getElementById('player7').pause(); 
+			document.getElementById('player8').pause();
+		}
+		function rewind()
+		{
+			document.getElementById('player1').currentTime = 0; 
+			document.getElementById('player2').currentTime = 0; 
+			document.getElementById('player3').currentTime = 0; 
+			document.getElementById('player4').currentTime = 0; 
+			document.getElementById('player5').currentTime = 0; 
+			document.getElementById('player6').currentTime = 0; 
+			document.getElementById('player7').currentTime = 0; 
+			document.getElementById('player8').currentTime = 0; 
+		}
+		function updateProgress(audioFile)
+		{
+			songPosition = audioFile.currentTime;
+			songLength = audioFile.duration;
+			songProgress = (songPosition / songLength).toFixed(2);
+			document.getElementById('progressText').innerHTML=songProgress;
+			document.getElementById('progressBar').value=songProgress;
+		}
+		function setSongPosition()
+		{
+			seekToPercent=document.getElementById("progressBar").value
+			seekToTime = document.getElementById('player1').duration * seekToPercent; 
+			document.getElementById('player1').currentTime = seekToTime; 
+			document.getElementById('player2').currentTime = seekToTime; 
+			document.getElementById('player3').currentTime = seekToTime; 
+			document.getElementById('player4').currentTime = seekToTime + document.getElementById('player1').currentTime + (document.getElementById('player4').duration * shift / 10); 
+			document.getElementById('player5').currentTime = seekToTime; 
+			document.getElementById('player6').currentTime = seekToTime; 
+			document.getElementById('player7').currentTime = seekToTime; 
+			document.getElementById('player8').currentTime = seekToTime; 
+		}
+		function shiftTrack(shift, track, sv)
+		{
+			shift = shift - 1;
+			shiftValue = document.getElementById('player1').currentTime + (document.getElementById(track).duration * shift / 10);
+			document.getElementById(track).currentTime = shiftValue;
+			document.getElementById(sv).innerHTML = shift.toFixed(4);
+		}
+		
+		function giveBack(){
+			//alert("yuck");
+			newFile = document.getElementById('player3').src;
+			//return window.URL.createObjectURL(newFile);
+			return newFile
+			//return "yellow";
+		}
+		
+		function sendIt() {
+		  var xhr = new XMLHttpRequest();
+		  xhr.open("post", "after.php", true);
+		  
+		  myBlob = document.getElementById('player3');
+
+		  xhr.send(myBlob);
+		}
+		
+		function display(songTitle) {
+			songBanner = "Now Playing: " + songTitle
+			document.getElementById('ThisSong').innerHTML=songBanner;
+		}
+		
+		function loadSong() {
+			songTitle=document.getElementById('songTitle').value;
+			for (var i=1;i<9;i++) {
+			  var player = "player" + i;
+			  url = "http://octopodmusic.com/upload/" + songTitle + "_" + player + ".mp3";
+			  document.getElementById(player).src=url;
+			}
+		}
+
+	</script>
+
+	<style>
+		body { font: 14pt Arial, sans-serif; background: lightgrey; }
+		select { font: 14pt Arial, sans-serif; }
+		body { text-align: center; margin-top: 12pt;}
+		canvas { display: inline-block; background: #202020; box-shadow: 0px 0px 10px blue;}
+		#record.recording { background: red;
+		background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); }
+		
+	</style>
+	<style type="text/css" media="screen">
+		div {
+        	margin-bottom: 1em;
+        }
+        code {
+	        color: gray;
+        }
+        .slider-width {
+        	width: 400px;
+    	}
+    </style>
+
+
+</head>
+
+<body>
+<div class="container">
+    &nbsp;
+    <header>
+    <img src="/images/pianoBanner.jpg">
+    </header>
+    <ul style="text-align: left">
+        <li style="display:inline;"><a href="/">Home</a></li>
+        <li style="display:inline;"><a href="/Opportunities.html">Opportunities</a></li>
+        <li style="display:inline;"><a href="/Contacts.html">Contacts</a></li>
+        <li style="display:inline;"><a href="/departer.html">depart</a></li>
+        <li style="display:inline;"><a href="/profiles/barry.html">Profile</a></li>
+    </ul>
+    <br>
+    <p>
+
+Song Title<input type='text' id='songTitle' value='SongTitle' onChange="display(this.value)"><button onClick="loadSong()">Load Song</button><br>
+
+<form id='armed'>
+Track 1: arm<input type='radio' name='arm' value='player1'><audio id='player1'  onTimeUpdate=updateProgress(this) controls>
+Your browser does not support the audio element.
+</audio>
+<input type="file" id="input" onchange="goGetter(this, 'player1')">
+<!--
+<input id="volume1" min="0" max="1" step="0.01" type="range" value="1" onchange="setVolume(this.value, 'player1')"/>
+-->
+<br>
+
+Track 2: arm<input type='radio' name='arm' value='player2'><audio id='player2' controls>
+Your browser does not support the audio element.
+</audio>
+<input type="file" id="input" onchange="goGetter(this, 'player2')">
+<!--
+<input id="volume2" min="0" max="1" step="0.01" type="range" value="1" onchange="setVolume(this.value, 'player2')"/><br>
+-->
+<br>
+Shift: <input id="trackShifter2" class="slider-width" min="0" max="2" step=".001" type=range value="1" onchange="shiftTrack(this.value, 'player2', 'sv2')"><a id="sv2">0.00</a><br>
+
+Track 3: arm<input type='radio' name='arm' value='player3'><audio id='player3' controls>
+Your browser does not support the audio element.
+</audio>
+<input type="file" id="input" onchange="goGetter(this, 'player3')">
+<!--
+<input id="volume3" min="0" max="1" step="0.01" type="range" value="1" onchange="setVolume(this.value, 'player3')"/><br>
+-->
+<br>
+Shift: <input id="trackShifter3" class="slider-width" min="0" max="2" step=".001" type=range value="1" onchange="shiftTrack(this.value, 'player3', 'sv3')"><a id="sv3">0.00</a><br>
+
+<img id="record" width="45" height="45" src="img/mic128.png" onclick="toggleRecording(this)">
+Track 4: arm<input type='radio' name='arm' value='player4'><audio id='player4' controls>
+Your browser does not support the audio element.
+</audio>
+<input type="file" id="input" onchange="goGetter(this, 'player4')">
+<!--
+<input id="volume4" min="0" max="1" step="0.01" type="range" value="1" onchange="setVolume(this.value, 'player4')"/><br>
+-->
+<img id="record" width="45" height="45" src="img/mic128.png" onclick="toggleRecording(this)">
+<br>
+Shift: <input id="trackShifter4" class="slider-width" min="0" max="2" step=".001" type=range value="1" onchange="shiftTrack(this.value, 'player4', 'sv4')"><a id="sv4">0.00</a><br>
+
+Track 5: arm<input type='radio' name='arm' value='player5'><audio id='player5' controls>
+Your browser does not support the audio element.
+</audio>
+<input type="file" id="input" onchange="goGetter(this, 'player5')">
+<!--
+<input id="volume5" min="0" max="1" step="0.01" type="range" value="1" onchange="setVolume(this.value, 'player5')"/><br>
+-->
+<br>
+Shift: <input id="trackShifter5" class="slider-width" min="0" max="2" step=".001" type=range value="1" onchange="shiftTrack(this.value, 'player5', "sv5")"><a id="sv5">0.00</a><br>
+
+Track 6: arm<input type='radio' name='arm' value='player6'><audio id='player6' controls>
+Your browser does not support the audio element.
+</audio>
+<input type="file" id="input" onchange="goGetter(this, 'player6')">
+<!--
+<input id="volume6" min="0" max="1" step="0.01" type="range" value="1" onchange="setVolume(this.value, 'player6')"/><br>
+-->
+<br>
+Shift: <input id="trackShifter6" class="slider-width" min="0" max="2" step=".001" type=range value="1" onchange="shiftTrack(this.value, 'player6', "sv6")"><a id="sv6">0.00</a><br>
+
+Track 7: arm<input type='radio' name='arm' value='player7'><audio id='player7' controls>
+Your browser does not support the audio element.
+</audio>
+<input type="file" id="input" onchange="goGetter(this, 'player7')">
+<!--
+<input id="volume7" min="0" max="1" step="0.01" type="range" value="1" onchange="setVolume(this.value, 'player7')"/><br>
+-->
+<br>
+Shift: <input id="trackShifter7" class="slider-width" min="0" max="2" step=".001" type=range value="1" onchange="shiftTrack(this.value, 'player7', "sv7")"><a id="sv7">0.00</a><br>
+
+Track 8: arm<input type='radio' name='arm' value='player8'><audio id='player8' controls>
+Your browser does not support the audio element.
+</audio>
+<input type="file" id="input" onchange="goGetter(this, 'player8')">
+<!--
+<input id="volume8" min="0" max="1" step="0.01" type="range" value="1" onchange="setVolume(this.value, 'player8')"/><br>
+-->
+<br>
+Shift: <input id="trackShifter8" class="slider-width" min="0" max="2" step=".001" type=range value="1" onchange="shiftTrack(this.value, 'player8', "sv8")"><a id="sv8">0.00</a><br>
+</form> 
+
+<a id="ThisSong"></a><br>
+Song Progress: <a id="progressText"></a><br>
+<input id="progressBar" min="0" max="1" step="0.001" type="range" value=0 onChange = setSongPosition()><br>
+<button onclick=startPlay()>Play</button>
+<button onclick=stopPlay()>Stop</button>
+<button onclick=rewind()>Rewind</button>
+<br>
+<br>
+<img src="img/save.svg" onclick="saveAudio();">
+
+<br>
+
+<canvas id="analyser" width="768" height="100"></canvas><br>
+<canvas id="wavedisplay" width="768" height="100"></canvas><br>
+
+</body>
+</html>
