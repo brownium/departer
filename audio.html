@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>Octopod Audio Player</title>
+
+<script>
+
+"use strict"
+
+
+function audioContextCheck() {
+    if (typeof AudioContext !== "undefined") {
+        return new AudioContext();
+    } else if (typeof webkitAudioContext !== "undefined") {
+        return new webkitAudioContext();
+    } else if (typeof mozAudioContext !== "undefined") {
+        return new mozAudioContext();
+    } else {
+        throw new Error('AudioContext not supported');
+    }
+}
+
+var audioContext = audioContextCheck();
+
+function Bufferator(buffer) {
+    Buffer = buffer;
+}
+
+
+const createAudioContext = require('ios-safe-audio-context')
+ 
+clickToPlay.addEventListener('touchend', () => {
+  const audioContext = createAudioContext()
+  
+  // now you can use this context for playback 
+})
+
+
+function unlockAud() {
+
+	alert("unlocking");
+	// create empty buffer
+	var buffer = audioContext.createBuffer(2, audioContext.sampleRate * 3, audioContext.sampleRate);
+	//var buffer = new AudioBuffer(1, 1, 22050);
+	var source = audioContext.createBufferSource();
+	source.buffer = buffer;
+
+	// connect to output (your speakers)
+	source.connect(audioContext.destination);
+
+	// play the file
+	//source.noteOn(0);
+	alert("unlocked");
+}
+
+
+var sBuffer;
+var aBuffer;
+var tBuffer;
+var bBuffer;
+var getSoprano;
+var getAlto;
+var getTenor;
+var getBass;
+var playSoundMix;
+
+function loadSong(songName) {
+	getSoprano = new XMLHttpRequest();
+	getSoprano.open("get", "MP3/" + songName + "_Soprano.mp3", true);
+	getSoprano.responseType = "arraybuffer";	
+	
+	getAlto = new XMLHttpRequest();
+	getAlto.open("get", "MP3/" + songName + "_Alto.mp3", true);
+	getAlto.responseType = "arraybuffer";
+	
+	getTenor = new XMLHttpRequest();
+	getTenor.open("get", "MP3/" + songName + "_Tenor.mp3", true);
+	getTenor.responseType = "arraybuffer";
+	
+	getBass = new XMLHttpRequest();
+	getBass.open("get", "MP3/" + songName + "_Bass.mp3", true);
+	getBass.responseType = "arraybuffer";
+
+	getSoprano.send();
+	getAlto.send();
+	getTenor.send();
+	getBass.send();
+
+	getSoprano.onload = function() {
+	    audioContext.decodeAudioData(getSoprano.response, function(buffer){sBuffer=buffer});
+	    alert('soprano loaded');
+	};
+	getAlto.onload = function() {
+	    audioContext.decodeAudioData(getAlto.response, function(buffer){aBuffer=buffer});
+	};	
+	getTenor.onload = function() {
+	    audioContext.decodeAudioData(getTenor.response, function(buffer){tBuffer=buffer});
+	};
+	getBass.onload = function() {
+	    audioContext.decodeAudioData(getBass.response, function(buffer){bBuffer=buffer});
+	};
+}
+
+function playback() {
+    var playS = audioContext.createBufferSource();
+    playS.buffer = sBuffer;
+    var playA = audioContext.createBufferSource();
+    playA.buffer = aBuffer;
+    var playT = audioContext.createBufferSource();
+    playT.buffer = tBuffer;
+    var playB = audioContext.createBufferSource();
+    playB.buffer = aBuffer;
+
+    playSoundMix = audioContext.createGain();
+    playSoundMix.gain.value = 0.1;
+    playS.connect(playSoundMix);
+    playA.connect(playSoundMix);
+    playT.connect(playSoundMix);
+    playB.connect(playSoundMix);
+    playSoundMix.connect(audioContext.destination);
+
+    var startTime = audioContext.currentTime + .2;
+
+    playS.start(startTime);    	
+    playA.start(startTime);
+    playT.start(startTime);
+    playB.start(startTime);
+    
+}
+
+function changeVol(level) {
+    playSoundMix.gain.value = level;
+}
+
+</script>
+<body>
+<button onclick="unlockAud()">unlock</button><br>
+Songs:<br>
+	<select onchange="loadSong(this.value)">
+	  <option>"--Select a song--"</option>
+	  <option value="ComeThouLongExpectedJesus">"Come Thou Long Expected Jesus"</option>
+	  <option value="LoHowARose">"Lo How A Rose"</option>
+	  <option value="OLittle">"O Little Town of Bethlehem"</option>
+	  <option value="Once">"Once in Royal David's City"</option>
+	  <option value="SilentNight">"Silent Night"</option>
+	</select>
+	<br>
+    	<button onclick="playback()">play</button>
+    	<select onchange="changeVol(this.value)">
+    		<option value = .1>1</option>
+    		<option value = .5>5</option>
+    		<option value = .9>9</option>
+    	</select>
+</body>
+</html>
