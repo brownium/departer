@@ -9,8 +9,24 @@
         <script src="./js/playerControls.js"></script>
         <script>
 
-        "use strict"
+        "use strict";
 
+        var Soprano;
+        var Alto;
+        var Tenor;
+        var Bass;
+        var sBuffer;
+        var aBuffer;
+        var tBuffer;
+        var bBuffer;
+        var sGain;
+        var aGain;
+        var tGain;
+        var bGain;
+        var playSoundMix;
+        var requests = [];
+        var buffers = [];
+        var audioData = [];
 
         function audioContextCheck() {
             if (typeof AudioContext !== "undefined") {
@@ -26,69 +42,51 @@
 
         var audioContext = audioContextCheck();
 
-        function Bufferator(buffer) {
-            Buffer = buffer;
-        }
-
-        var sBuffer;
-        var aBuffer;
-        var tBuffer;
-        var bBuffer;
-        var sGain;
-        var aGain;
-        var tGain;
-        var bGain;
-        var Soprano;
-        var Alto;
-        var Tenor;
-        var Bass;
-        var playSoundMix;
-
         function loadSong(songName) {
-        	Soprano = new XMLHttpRequest();
-        	Soprano.open("get", "MP3/" + songName + "/Soprano.mp3", true);
-        	Soprano.responseType = "arraybuffer";
+            var voices = ["Soprano", "Alto", "Tenor", "Bass"];
 
-        	Alto = new XMLHttpRequest();
-        	Alto.open("get", "MP3/" + songName + "/Alto.mp3", true);
-        	Alto.responseType = "arraybuffer";
+            for (var i = 0; i < voices.length; i++) {
+                var soundFile = "MP3/" + songName + "/" + voices[i] + ".mp3";
+                requests[i] = new XMLHttpRequest();
+                requests[i].open("get", soundFile, true);
+                requests[i].responseType = "arraybuffer";
+            }
 
-        	Tenor = new XMLHttpRequest();
-        	Tenor.open("get", "MP3/" + songName + "/Tenor.mp3", true);
-        	Tenor.responseType = "arraybuffer";
+            // for (var i = 0; i < voices.length; i++) {
+            //     audioData[i] = requests[i].response;
+            //     requests[i].onload = function(audioData=audioData[i]) {
+            //         alert(audioData);
+            // 	    audioContext.decodeAudioData(audioData, function(buffer){buffers[i]=buffer});
+            // 	};
+            // };
 
-        	Bass = new XMLHttpRequest();
-        	Bass.open("get", "MP3/" + songName + "/Bass.mp3", true);
-        	Bass.responseType = "arraybuffer";
-
-        	Soprano.send();
-        	Alto.send();
-        	Tenor.send();
-        	Bass.send();
-
-        	Soprano.onload = function() {
-        	    audioContext.decodeAudioData(Soprano.response, function(buffer){sBuffer=buffer});
+        	requests[0].onload = function() {
+                var audioData = requests[0].response;
+        	    audioContext.decodeAudioData(audioData, function(buffer){buffers[0]=buffer});
         	};
-        	Alto.onload = function() {
-        	    audioContext.decodeAudioData(Alto.response, function(buffer){aBuffer=buffer});
+        	requests[1].onload = function() {
+        	    audioContext.decodeAudioData(requests[1].response, function(buffer){buffers[1]=buffer});
         	};
-        	Tenor.onload = function() {
-        	    audioContext.decodeAudioData(Tenor.response, function(buffer){tBuffer=buffer});
+        	requests[2].onload = function() {
+        	    audioContext.decodeAudioData(requests[2].response, function(buffer){buffers[2]=buffer});
         	};
-        	Bass.onload = function() {
-        	    audioContext.decodeAudioData(Bass.response, function(buffer){bBuffer=buffer});
+        	requests[3].onload = function() {
+        	    audioContext.decodeAudioData(requests[3].response, function(buffer){buffers[3]=buffer});
         	};
+            for (var i = 0; i < voices.length; i++) {
+                requests[i].send();
+            }
         }
 
         function playback() {
             var playS = audioContext.createBufferSource();
-            playS.buffer = sBuffer;
+            playS.buffer = buffers[0];
             var playA = audioContext.createBufferSource();
-            playA.buffer = aBuffer;
+            playA.buffer = buffers[1];
             var playT = audioContext.createBufferSource();
-            playT.buffer = tBuffer;
+            playT.buffer = buffers[2];
             var playB = audioContext.createBufferSource();
-            playB.buffer = aBuffer;
+            playB.buffer = buffers[3];
 
             playSoundMix = audioContext.createGain();
             playSoundMix.gain.value = 0.5;
