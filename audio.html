@@ -1,154 +1,161 @@
 <html>
-<head>
-<title>Octopod Audio Player</title>
+    <head>
 
-<script>
+        <link rel="stylesheet" type="text/css" href="./css/playerControls.css">
 
-"use strict"
-
-
-function audioContextCheck() {
-    if (typeof AudioContext !== "undefined") {
-        return new AudioContext();
-    } else if (typeof webkitAudioContext !== "undefined") {
-        return new webkitAudioContext();
-    } else if (typeof mozAudioContext !== "undefined") {
-        return new mozAudioContext();
-    } else {
-        throw new Error('AudioContext not supported');
-    }
-}
-
-var audioContext = audioContextCheck();
-
-function Bufferator(buffer) {
-    Buffer = buffer;
-}
+        <title>Octopod Audio Player</title>
 
 
-const createAudioContext = require('ios-safe-audio-context')
- 
-clickToPlay.addEventListener('touchend', () => {
-  const audioContext = createAudioContext()
-  
-  // now you can use this context for playback 
-})
+        <script src="./js/playerControls.js"></script>
+        <script>
+
+        "use strict"
 
 
-function unlockAud() {
+        function audioContextCheck() {
+            if (typeof AudioContext !== "undefined") {
+                return new AudioContext();
+            } else if (typeof webkitAudioContext !== "undefined") {
+                return new webkitAudioContext();
+            } else if (typeof mozAudioContext !== "undefined") {
+                return new mozAudioContext();
+            } else {
+                throw new Error('AudioContext not supported');
+            }
+        }
 
-	alert("unlocking");
-	// create empty buffer
-	var buffer = audioContext.createBuffer(2, audioContext.sampleRate * 3, audioContext.sampleRate);
-	//var buffer = new AudioBuffer(1, 1, 22050);
-	var source = audioContext.createBufferSource();
-	source.buffer = buffer;
+        var audioContext = audioContextCheck();
 
-	// connect to output (your speakers)
-	source.connect(audioContext.destination);
+        function Bufferator(buffer) {
+            Buffer = buffer;
+        }
 
-	// play the file
-	//source.noteOn(0);
-	alert("unlocked");
-}
+        var sBuffer;
+        var aBuffer;
+        var tBuffer;
+        var bBuffer;
+        var sGain;
+        var aGain;
+        var tGain;
+        var bGain;
+        var Soprano;
+        var Alto;
+        var Tenor;
+        var Bass;
+        var playSoundMix;
 
+        function loadSong(songName) {
+        	Soprano = new XMLHttpRequest();
+        	Soprano.open("get", "MP3/" + songName + "/Soprano.mp3", true);
+        	Soprano.responseType = "arraybuffer";
 
-var sBuffer;
-var aBuffer;
-var tBuffer;
-var bBuffer;
-var getSoprano;
-var getAlto;
-var getTenor;
-var getBass;
-var playSoundMix;
+        	Alto = new XMLHttpRequest();
+        	Alto.open("get", "MP3/" + songName + "/Alto.mp3", true);
+        	Alto.responseType = "arraybuffer";
 
-function loadSong(songName) {
-	getSoprano = new XMLHttpRequest();
-	getSoprano.open("get", "MP3/" + songName + "_Soprano.mp3", true);
-	getSoprano.responseType = "arraybuffer";	
-	
-	getAlto = new XMLHttpRequest();
-	getAlto.open("get", "MP3/" + songName + "_Alto.mp3", true);
-	getAlto.responseType = "arraybuffer";
-	
-	getTenor = new XMLHttpRequest();
-	getTenor.open("get", "MP3/" + songName + "_Tenor.mp3", true);
-	getTenor.responseType = "arraybuffer";
-	
-	getBass = new XMLHttpRequest();
-	getBass.open("get", "MP3/" + songName + "_Bass.mp3", true);
-	getBass.responseType = "arraybuffer";
+        	Tenor = new XMLHttpRequest();
+        	Tenor.open("get", "MP3/" + songName + "/Tenor.mp3", true);
+        	Tenor.responseType = "arraybuffer";
 
-	getSoprano.send();
-	getAlto.send();
-	getTenor.send();
-	getBass.send();
+        	Bass = new XMLHttpRequest();
+        	Bass.open("get", "MP3/" + songName + "/Bass.mp3", true);
+        	Bass.responseType = "arraybuffer";
 
-	getSoprano.onload = function() {
-	    audioContext.decodeAudioData(getSoprano.response, function(buffer){sBuffer=buffer});
-	    alert('soprano loaded');
-	};
-	getAlto.onload = function() {
-	    audioContext.decodeAudioData(getAlto.response, function(buffer){aBuffer=buffer});
-	};	
-	getTenor.onload = function() {
-	    audioContext.decodeAudioData(getTenor.response, function(buffer){tBuffer=buffer});
-	};
-	getBass.onload = function() {
-	    audioContext.decodeAudioData(getBass.response, function(buffer){bBuffer=buffer});
-	};
-}
+        	Soprano.send();
+        	Alto.send();
+        	Tenor.send();
+        	Bass.send();
 
-function playback() {
-    var playS = audioContext.createBufferSource();
-    playS.buffer = sBuffer;
-    var playA = audioContext.createBufferSource();
-    playA.buffer = aBuffer;
-    var playT = audioContext.createBufferSource();
-    playT.buffer = tBuffer;
-    var playB = audioContext.createBufferSource();
-    playB.buffer = aBuffer;
+        	Soprano.onload = function() {
+        	    audioContext.decodeAudioData(Soprano.response, function(buffer){sBuffer=buffer});
+        	};
+        	Alto.onload = function() {
+        	    audioContext.decodeAudioData(Alto.response, function(buffer){aBuffer=buffer});
+        	};
+        	Tenor.onload = function() {
+        	    audioContext.decodeAudioData(Tenor.response, function(buffer){tBuffer=buffer});
+        	};
+        	Bass.onload = function() {
+        	    audioContext.decodeAudioData(Bass.response, function(buffer){bBuffer=buffer});
+        	};
+        }
 
-    playSoundMix = audioContext.createGain();
-    playSoundMix.gain.value = 0.1;
-    playS.connect(playSoundMix);
-    playA.connect(playSoundMix);
-    playT.connect(playSoundMix);
-    playB.connect(playSoundMix);
-    playSoundMix.connect(audioContext.destination);
+        function playback() {
+            var playS = audioContext.createBufferSource();
+            playS.buffer = sBuffer;
+            var playA = audioContext.createBufferSource();
+            playA.buffer = aBuffer;
+            var playT = audioContext.createBufferSource();
+            playT.buffer = tBuffer;
+            var playB = audioContext.createBufferSource();
+            playB.buffer = aBuffer;
 
-    var startTime = audioContext.currentTime + .2;
+            playSoundMix = audioContext.createGain();
+            playSoundMix.gain.value = 0.5;
+            sGain = audioContext.createGain();
+            sGain.gain.value = 1;
+            aGain = audioContext.createGain();
+            aGain.gain.value = 1;
+            tGain = audioContext.createGain();
+            tGain.gain.value = 1;
+            bGain = audioContext.createGain();
+            bGain.gain.value = 1;
 
-    playS.start(startTime);    	
-    playA.start(startTime);
-    playT.start(startTime);
-    playB.start(startTime);
-    
-}
+            playS.connect(sGain);
+            sGain.connect(playSoundMix);
+            playA.connect(aGain);
+            aGain.connect(playSoundMix);
+            playT.connect(tGain);
+            tGain.connect(playSoundMix);
+            playB.connect(bGain);
+            bGain.connect(playSoundMix);
+            playSoundMix.connect(audioContext.destination);
 
-function changeVol(level) {
-    playSoundMix.gain.value = level;
-}
+            var startTime = audioContext.currentTime + .2;
 
-</script>
-<body>
-<button onclick="unlockAud()">unlock</button><br>
-Songs:<br>
-	<select onchange="loadSong(this.value)">
-	  <option>"--Select a song--"</option>
-	  <option value="ComeThouLongExpectedJesus">"Come Thou Long Expected Jesus"</option>
-	  <option value="LoHowARose">"Lo How A Rose"</option>
-	  <option value="OLittle">"O Little Town of Bethlehem"</option>
-	  <option value="Once">"Once in Royal David's City"</option>
-	  <option value="SilentNight">"Silent Night"</option>
-	</select>
-	<br>
-    	<button onclick="playback()">play</button>
-    	<select onchange="changeVol(this.value)">
-    		<option value = .1>1</option>
-    		<option value = .5>5</option>
-    		<option value = .9>9</option>
+            playS.start(startTime);
+            playA.start(startTime);
+            playT.start(startTime);
+            playB.start(startTime);
+
+        }
+
+        function changeVol(track, volLevel) {
+            var level = volLevel/100;
+            track.gain.value = level;
+        }
+
+        </script>
+    </head>
+    <body>
+        Songs:<br>
+    	<select onchange="loadSong(this.value)">
+    	  <option>"--Select a song--"</option>
+    	  <option value="ComeThouLongExpectedJesus">"Come Thou Long Expected Jesus"</option>
+          <option value="JoyToTheWorld">"Joy To The World"</option>
+          <option value="LoHowARose">"Lo How A Rose"</option>
+          <option value="OComeOComeEmmanuel">"O Come O Come Emmanuel"</option>
+          <option value="OHolyNight">"O Holy Night"</option>
+    	  <option value="OLittleTownOfBethlehem">"O Little Town of Bethlehem"</option>
+    	  <option value="OnceInRoyalDavidsCity">"Once in Royal David's City"</option>
+    	  <option value="SilentNight">"Silent Night"</option>
     	</select>
-</body>
+    	<br>
+    	<button onclick="playback()">play</button>
+        <div class="slidecontainer">
+          S: <input type="range" min="0" max="100" value="100" id="myRange" onchange="changeVol(sGain, this.value)">
+        </div>
+        <div class="slidecontainer">
+          A: <input type="range" min="0" max="100" value="100" id="myRange" onchange="changeVol(aGain, this.value)">
+        </div>
+        <div class="slidecontainer">
+          T: <input type="range" min="0" max="100" value="100" id="myRange" onchange="changeVol(tGain, this.value)">
+        </div>
+        <div class="slidecontainer">
+          B: <input type="range" min="0" max="100" value="100" id="myRange" onchange="changeVol(bGain, this.value)">
+        </div>
+        <div class="slidecontainer">
+          M: <input type="range" min="0" max="100" value="50" id="myRange" onchange="changeVol(playSoundMix, this.value)">
+        </div>
+    </body>
 </html>
