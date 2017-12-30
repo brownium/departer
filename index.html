@@ -1,8 +1,15 @@
 <html>
     <head>
         <title>Octopod Audio Player</title>
+        <script type="text/javascript" src="./js/songData.json"></script>
         <script>
         "use strict";
+
+        function showData() {
+            var mydata = JSON.parse(ComeThouLongExpectedJesus);
+            alert(mydata[0]);
+            alert(mydata[2]);
+        }
 
         var Soprano;
         var Alto;
@@ -30,6 +37,23 @@
 
         var source1
         var source2
+
+        var bufferLoader
+
+        function audioContextCheck() {
+            if (typeof AudioContext !== "undefined") {
+                return new AudioContext();
+            } else if (typeof webkitAudioContext !== "undefined") {
+                return new webkitAudioContext();
+            } else if (typeof mozAudioContext !== "undefined") {
+                return new mozAudioContext();
+            } else {
+                throw new Error('AudioContext not supported');
+            }
+        }
+
+        var context = audioContextCheck();
+
         function BufferLoader(context, urlList, callback) {
             this.context = context;
             this.urlList = urlList;
@@ -77,13 +101,7 @@
             this.loadBuffer(this.urlList[i], i);
         }
 
-        var context;
-        var bufferLoader;
-
         function init(song) {
-            // Fix up prefixing
-            window.AudioContext = window.AudioContext || window.webkitAudioContext;
-            context = new AudioContext();
             var songlist = [
                 "./MP3/" + song + "/Soprano.mp3",
                 "./MP3/" + song + "/Alto.mp3",
@@ -117,7 +135,7 @@
             }
         }
 
-        function startPlay1() {
+        function startPlay() {
             var startTime = context.currentTime + .2;
             for (var i=0; i<trackList.length; i++) {
                     console.log("i: " + i);
@@ -125,108 +143,12 @@
             }
         }
 
-        function stopPlay1() {
+        function stopPlay() {
             for (var i=0; i<trackList.length; i++) {
                 trackList[i].stop(0);
             }
         }
 
-        function audioContextCheck() {
-            if (typeof AudioContext !== "undefined") {
-                return new AudioContext();
-            } else if (typeof webkitAudioContext !== "undefined") {
-                return new webkitAudioContext();
-            } else if (typeof mozAudioContext !== "undefined") {
-                return new mozAudioContext();
-            } else {
-                throw new Error('AudioContext not supported');
-            }
-        }
-
-        var audioContext = audioContextCheck();
-
-        function loadSong(songName) {
-            var voices = ["Soprano", "Alto", "Tenor", "Bass"];
-
-            for (var i = 0; i < voices.length; i++) {
-                var soundFile = "MP3/" + songName + "/" + voices[i] + ".mp3";
-                requests[i] = new XMLHttpRequest();
-                requests[i].open("get", soundFile, true);
-                requests[i].responseType = "arraybuffer";
-            }
-
-            // for (var i = 0; i < voices.length; i++) {
-            //     audioData[i] = requests[i].response;
-            //     requests[i].onload = function(audioData=audioData[i]) {
-            //         alert(audioData);
-            // 	    audioContext.decodeAudioData(audioData, function(buffer){buffers[i]=buffer});
-            // 	};
-            // };
-
-        	requests[0].onload = function() {
-                var audioData = requests[0].response;
-        	    audioContext.decodeAudioData(audioData, function(buffer){buffers[0]=buffer});
-        	};
-        	requests[1].onload = function() {
-        	    audioContext.decodeAudioData(requests[1].response, function(buffer){buffers[1]=buffer});
-        	};
-        	requests[2].onload = function() {
-        	    audioContext.decodeAudioData(requests[2].response, function(buffer){buffers[2]=buffer});
-        	};
-        	requests[3].onload = function() {
-        	    audioContext.decodeAudioData(requests[3].response, function(buffer){buffers[3]=buffer});
-        	};
-            for (var i = 0; i < voices.length; i++) {
-                requests[i].send();
-            }
-        }
-
-        function startPlay() {
-            playS = audioContext.createBufferSource();
-            playS.buffer = buffers[0];
-            playA = audioContext.createBufferSource();
-            playA.buffer = buffers[1];
-            playT = audioContext.createBufferSource();
-            playT.buffer = buffers[2];
-            playB = audioContext.createBufferSource();
-            playB.buffer = buffers[3];
-
-            playSoundMix = audioContext.createGain();
-            playSoundMix.gain.value = 0.5;
-            sGain = audioContext.createGain();
-            sGain.gain.value = 1;
-            aGain = audioContext.createGain();
-            aGain.gain.value = 1;
-            tGain = audioContext.createGain();
-            tGain.gain.value = 1;
-            bGain = audioContext.createGain();
-            bGain.gain.value = 1;
-
-            playS.connect(sGain);
-            sGain.connect(playSoundMix);
-            playA.connect(aGain);
-            aGain.connect(playSoundMix);
-            playT.connect(tGain);
-            tGain.connect(playSoundMix);
-            playB.connect(bGain);
-            bGain.connect(playSoundMix);
-            playSoundMix.connect(audioContext.destination);
-
-            var startTime = audioContext.currentTime + .2;
-
-            playS.start(startTime);
-            playA.start(startTime);
-            playT.start(startTime);
-            playB.start(startTime);
-
-        }
-
-        function stopPlay() {
-            playS.stop();
-            playA.stop();
-            playT.stop();
-            playB.stop();
-        }
 
         function changeVol(track, volLevel) {
             var level = volLevel/100;
@@ -236,6 +158,7 @@
         </script>
     </head>
     <body>
+        <button onclick="showData()">"show datat"</button>
         Songs:<br>
     	<select onchange="init(this.value)">
     	  <option>"--Select a song--"</option>
@@ -264,8 +187,6 @@
         <div class="slidecontainer">
           M: <input type="range" min="0" max="100" value="50" id="myRange" onchange="changeVol(mainGain, this.value)">
         </div>
-        <button onclick="startPlay()">play</button> <button onclick="stopPlay()">stop</button><br>
-        <button onclick="init(['./MP3/LoHowARose/Soprano.mp3', './MP3/LoHowARose/Alto.mp3'])">Init</b>
-        <button onclick="startPlay1()">play</button> <button onclick="stopPlay1()">stop</button>
+        <button onclick="startPlay()">play</button> <button onclick="stopPlay()">stop</button>
     </body>
 </html>
