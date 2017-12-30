@@ -87,6 +87,7 @@
             );
 
             bufferLoader.load();
+            buildControls(song);
         }
 
 
@@ -96,6 +97,8 @@
             mainGain.gain.value = 0.5;
             mainGain.connect(context.destination);
 
+            trackList = [];
+            
             for (var i=0; i<bufferList.length; i++) {
                 trackList[i]=context.createBufferSource();
                 trackList[i].buffer = bufferList[i];
@@ -109,7 +112,6 @@
         function startPlay() {
             var startTime = context.currentTime + .2;
             for (var i=0; i<trackList.length; i++) {
-                    console.log("i: " + i);
                 trackList[i].start(startTime);
             }
         }
@@ -126,36 +128,45 @@
             track.gain.value = level;
         }
 
+        window.onload = function() {
+            let dropdown = document.getElementById('SongListDropDown');
+            dropdown.length = 0;
+            let defaultOption = document.createElement('option');
+            defaultOption.text = 'Choose Song';
+            dropdown.add(defaultOption);
+            dropdown.selectedIndex = 0;
+            let option;
+            for (let key in library) {
+                option = document.createElement('option');
+                option.text = library[key]['name'];
+                option.value = key;
+                dropdown.add(option);
+            }
+        }
+
+        function buildControls(song) {
+            var div = document.getElementById('volControls');
+            div.innerHTML = "";
+            for (var i=0; i<library[song]["voices"].length; i++) {
+                let volControl = library[song]["voices"][i]
+                volControl += '<input type="range" min="0" max="100" value="100" id="myRange" onchange="changeVol(trackGain['
+                volControl += i + '], this.value)"><br>'
+                div.innerHTML += volControl;
+            }
+        }
+
+
         </script>
     </head>
     <body>
         Songs:<br>
-    	<select onchange="init(this.value)">
-    	  <option>"--Select a song--"</option>
-    	  <option value="ComeThouLongExpectedJesus">"Come Thou Long Expected Jesus"</option>
-          <option value="JoyToTheWorld">"Joy To The World"</option>
-          <option value="LoHowARose">"Lo How A Rose"</option>
-          <option value="OComeOComeEmmanuel">"O Come O Come Emmanuel"</option>
-          <option value="OHolyNight">"O Holy Night"</option>
-    	  <option value="OLittleTownOfBethlehem">"O Little Town of Bethlehem"</option>
-    	  <option value="OnceInRoyalDavidsCity">"Once in Royal David's City"</option>
-    	  <option value="SilentNight">"Silent Night"</option>
+    	<select id="SongListDropDown" onchange="init(this.value)">
     	</select>
     	<br>
-        <div class="slidecontainer">
-          S: <input type="range" min="0" max="100" value="100" id="myRange" onchange="changeVol(trackGain[0], this.value)">
+        <div = id="volControls" class="slidecontainer">
         </div>
         <div class="slidecontainer">
-          A: <input type="range" min="0" max="100" value="100" id="myRange" onchange="changeVol(trackGain[1], this.value)">
-        </div>
-        <div class="slidecontainer">
-          T: <input type="range" min="0" max="100" value="100" id="myRange" onchange="changeVol(trackGain[2], this.value)">
-        </div>
-        <div class="slidecontainer">
-          B: <input type="range" min="0" max="100" value="100" id="myRange" onchange="changeVol(trackGain[3], this.value)">
-        </div>
-        <div class="slidecontainer">
-          M: <input type="range" min="0" max="100" value="50" id="myRange" onchange="changeVol(mainGain, this.value)">
+          Main: <input type="range" min="0" max="100" value="50" id="myRange" onchange="changeVol(mainGain, this.value)">
         </div>
         <button onclick="startPlay()">play</button> <button onclick="stopPlay()">stop</button>
     </body>

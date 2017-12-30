@@ -1,40 +1,48 @@
 library = {
     "ComeThouLongExpectedJesus": {
+        "name":"Come Thou Long Expected Jesus",
         "voices":[
             "Soprano", "Alto", "Tenor", "Bass", "Descant"
         ]
     },
     "JoyToTheWorld": {
+        "name": "Joy To The World",
         "voices":[
             "Soprano", "Alto", "Tenor", "Bass"
         ]
     },
     "LoHowARose": {
+        "name": "Lo How A Rose",
         "voices":[
             "Soprano", "Alto", "Tenor", "Bass"
         ]
     },
     "OComeOComeEmmanuel": {
+        "name": "O Come O Come Emmanuel",
         "voices":[
             "Soprano", "Alto", "Tenor", "Bass"
         ]
     },
     "OHolyNight": {
+        "name": "O Holy Night",
         "voices":[
             "Soprano", "Alto", "Tenor", "Bass"
         ]
     },
     "OLittleTownOfBethlehem": {
+        "name": "O Little Town of Bethlehem",
         "voices":[
             "Soprano", "Alto", "Tenor", "Bass"
         ]
     },
     "OnceInRoyalDavidsCity": {
+        "name": "Once In Royal David's City",
         "voices":[
             "Soprano", "Alto", "Tenor", "Bass"
         ]
     },
     "SilentNight": {
+        "name": "Silent Night",
         "voices":[
             "Soprano", "Alto", "Tenor", "Bass"
         ]
