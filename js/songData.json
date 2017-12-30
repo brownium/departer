@@ -1,1 +1,42 @@
-ComeThouLongExpectedJesus = '["Soprano", "Alto", "Tenor", "Bass", "Descant"]';
+library = {
+    "ComeThouLongExpectedJesus": {
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass", "Descant"
+        ]
+    },
+    "JoyToTheWorld": {
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ]
+    },
+    "LoHowARose": {
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ]
+    },
+    "OComeOComeEmmanuel": {
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ]
+    },
+    "OHolyNight": {
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ]
+    },
+    "OLittleTownOfBethlehem": {
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ]
+    },
+    "OnceInRoyalDavidsCity": {
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ]
+    },
+    "SilentNight": {
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ]
+    },
+};
