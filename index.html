@@ -98,7 +98,7 @@
             mainGain.connect(context.destination);
 
             trackList = [];
-            
+
             for (var i=0; i<bufferList.length; i++) {
                 trackList[i]=context.createBufferSource();
                 trackList[i].buffer = bufferList[i];
@@ -145,29 +145,55 @@
         }
 
         function buildControls(song) {
-            var div = document.getElementById('volControls');
+            var div = document.getElementById('slidecontainer');
+            let table = '<table><tr><th>Track</th><th>Volume</th></tr>'
             div.innerHTML = "";
             for (var i=0; i<library[song]["voices"].length; i++) {
-                let volControl = library[song]["voices"][i]
-                volControl += '<input type="range" min="0" max="100" value="100" id="myRange" onchange="changeVol(trackGain['
-                volControl += i + '], this.value)"><br>'
-                div.innerHTML += volControl;
+                let volTitle = library[song]["voices"][i];
+                let volControl = '<input type="range" min="0" max="100" value="100" ';
+                volControl += 'id=' + library[song]["voices"].name + '"Volume" ';
+                volControl += 'class="levelControl" ';
+                volControl += 'onchange="changeVol(trackGain[' + i + '], this.value)"><br>';
+                table += "<tr><td>" + volTitle + "</td><td>" + volControl + "</td></tr>";
             }
+            table += '<tr><td>Main:</td><td><input type="range" min="0" max="100" value="50" id="MainVol" class="levelControl" onchange="changeVol(mainGain, this.value)"></td></tr></table>'
+            div.innerHTML = table;
         }
 
 
         </script>
+
+        <style>
+            body {
+                background-color: linen;
+            }
+
+            #player1 {
+                background-color: #00D2D2;
+                width: 30%;
+            }
+
+            #startstop {
+                background-color: #ffffff;
+            }
+
+            h1 {
+                color: maroon;
+                margin-left: 40px;
+            }
+        </style>
     </head>
     <body>
         Songs:<br>
-    	<select id="SongListDropDown" onchange="init(this.value)">
-    	</select>
-    	<br>
-        <div = id="volControls" class="slidecontainer">
+        <div id="player1" class="audioplayer">
+        	<select id="SongListDropDown" onchange="init(this.value)">
+        	</select>
+        	<br>
+            <div id="slidecontainer">
+            </div>
+            <div id="startstop">
+                <button onclick="startPlay()">play</button> <button onclick="stopPlay()">stop</button>
+            </div>
         </div>
-        <div class="slidecontainer">
-          Main: <input type="range" min="0" max="100" value="50" id="myRange" onchange="changeVol(mainGain, this.value)">
-        </div>
-        <button onclick="startPlay()">play</button> <button onclick="stopPlay()">stop</button>
     </body>
 </html>
