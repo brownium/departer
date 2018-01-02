@@ -166,12 +166,16 @@
         <style>
             body {
                 background-color: linen;
-                font-size: 200%
+            }
+
+            th, td {
+                font-size: 24px;
             }
 
             #player1 {
                 background-color: #00D2D2;
                 width: 30%;
+                font-size: 60px;
             }
 
             #startstop {
@@ -182,18 +186,42 @@
                 color: maroon;
                 margin-left: 40px;
             }
+
+            .audioplayer {
+                font-size: 24px;
+            }
+
+            .selectInput {
+                font-size: 24px;
+            }
+
+            .gainControls {
+                font-size: 24px;
+            }
+
+            .button {
+                background-color: #4CAF50; /* Green */
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 24px;
+            }
         </style>
     </head>
     <body>
-        Songs:<br>
         <div id="player1" class="audioplayer">
-        	<select id="SongListDropDown" onchange="init(this.value)">
+            Songs:<br>
+        	<select id="SongListDropDown" class="selectInput" onchange="init(this.value)">
         	</select>
         	<br>
-            <div id="slidecontainer">
+            <div id="slidecontainer" class="gainControls">
             </div>
             <div id="startstop">
-                <button onclick="startPlay()">play</button> <button onclick="stopPlay()">stop</button>
+                <button onclick="startPlay()" class="button">play</button>
+                <button onclick="stopPlay()" class="button">stop</button>
             </div>
         </div>
     </body>
