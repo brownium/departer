@@ -145,19 +145,21 @@
         }
 
         function buildControls(song) {
-            var div = document.getElementById('slidecontainer');
-            let table = '<table><tr><th>Track</th><th>Volume</th></tr>'
-            div.innerHTML = "";
+            let tracktitles = document.getElementById('trackTitle1');
+            let gaincontrols = document.getElementById('trackVol1');
+            tracktitles.innerHTML = "";
+            gaincontrols.innerHTML = "";
             for (var i=0; i<library[song]["voices"].length; i++) {
-                let volTitle = library[song]["voices"][i];
-                let volControl = '<input type="range" min="0" max="100" value="100" ';
+                let volTitle = '<div class="titleItem">' + library[song]["voices"][i] + '</div>';
+                let volControl = '<div class="levelItem"><input type="range" min="0" max="100" value="100" ';
                 volControl += 'id=' + library[song]["voices"].name + '"Volume" ';
-                volControl += 'class="levelControl" ';
-                volControl += 'onchange="changeVol(trackGain[' + i + '], this.value)"><br>';
-                table += "<tr><td>" + volTitle + "</td><td>" + volControl + "</td></tr>";
+                volControl += 'class="levelSlider" ';
+                volControl += 'onchange="changeVol(trackGain[' + i + '], this.value)"></div>';
+                tracktitles.innerHTML += volTitle;
+                gaincontrols.innerHTML += volControl;
             }
-            table += '<tr><td>Main:</td><td><input type="range" min="0" max="100" value="50" id="MainVol" class="levelControl" onchange="changeVol(mainGain, this.value)"></td></tr></table>'
-            div.innerHTML = table;
+            tracktitles.innerHTML += "Master Vol";
+            gaincontrols.innerHTML += '<input type="range" min="0" max="100" value="50" id="MainVol" class="levelSlider" onchange="changeVol(mainGain, this.value)">';
         }
 
 
@@ -166,6 +168,7 @@
         <style>
             body {
                 background-color: linen;
+                font-size: 24px;
             }
 
             th, td {
@@ -175,7 +178,6 @@
             #player1 {
                 background-color: #00D2D2;
                 width: 30%;
-                font-size: 60px;
             }
 
             #startstop {
@@ -196,7 +198,26 @@
             }
 
             .gainControls {
+                display: inline;
                 font-size: 24px;
+            }
+
+            .trackTitles {
+                display: inline-block;
+                width: 120px;
+            }
+
+            .trackVols {
+                display: inline-block;
+                width: 40%;
+            }
+
+            .titleItem {
+                height: 28px;
+            }
+
+            .levelItem {
+                height: 28px;
             }
 
             .button {
@@ -217,7 +238,13 @@
         	<select id="SongListDropDown" class="selectInput" onchange="init(this.value)">
         	</select>
         	<br>
-            <div id="slidecontainer" class="gainControls">
+            <div id="songTitle1" class="songTitles">
+            </div>
+            <div id="gainControl1" class="gainControls">
+                <div id="trackTitle1" class="trackTitles">
+                </div>
+                <div id="trackVol1" class="trackVols">
+                </div>
             </div>
             <div id="startstop">
                 <button onclick="startPlay()" class="button">play</button>
