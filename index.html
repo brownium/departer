@@ -177,7 +177,7 @@
 
             #player1 {
                 background-color: #00D2D2;
-                width: 30%;
+                width: 450px;
             }
 
             #startstop {
@@ -187,6 +187,10 @@
             h1 {
                 color: maroon;
                 margin-left: 40px;
+            }
+
+            #PlayerTitle {
+                font-size: 60px;
             }
 
             .audioplayer {
@@ -199,25 +203,24 @@
 
             .gainControls {
                 display: inline;
-                font-size: 24px;
+                font-size: 30px;
             }
 
             .trackTitles {
                 display: inline-block;
-                width: 120px;
+                width: 150px;
             }
 
             .trackVols {
                 display: inline-block;
-                width: 40%;
             }
 
             .titleItem {
-                height: 28px;
+                height: 34px;
             }
 
             .levelItem {
-                height: 28px;
+                height: 34px;
             }
 
             .button {
@@ -234,7 +237,9 @@
     </head>
     <body>
         <div id="player1" class="audioplayer">
-            Songs:<br>
+            <div id="PlayerTitle">
+                Songs:<br>
+            </div>
         	<select id="SongListDropDown" class="selectInput" onchange="init(this.value)">
         	</select>
         	<br>
