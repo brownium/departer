@@ -38,7 +38,7 @@
 }
 
 body {
-    background-color: linen;
+    background-color: 4C6331;
     font-size: 24px;
 }
 
@@ -47,6 +47,7 @@ th, td {
 }
 
 #player1 {
+    margin: auto;
     background-color: #B3CB95;
     border: 2px solid black;
     border-radius: 15px;
