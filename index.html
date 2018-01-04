@@ -2,6 +2,7 @@
     <head>
         <title>Octopod Audio Player</title>
         <script type="text/javascript" src="./js/songData.json"></script>
+        <link rel="stylesheet" type="text/css" href="css/playerControls.css">
         <script>
         "use strict";
 
@@ -86,7 +87,9 @@
                 finishedLoading
             );
 
+            console.log("loading");
             bufferLoader.load();
+            console.log("loaded");
             buildControls(song);
         }
 
@@ -151,7 +154,7 @@
             gaincontrols.innerHTML = "";
             for (var i=0; i<library[song]["voices"].length; i++) {
                 let volTitle = '<div class="titleItem">' + library[song]["voices"][i] + '</div>';
-                let volControl = '<div class="levelItem"><input type="range" min="0" max="100" value="100" ';
+                let volControl = '<div class="levelSlider"><input type="range" min="0" max="100" value="100" ';
                 volControl += 'id=' + library[song]["voices"].name + '"Volume" ';
                 volControl += 'class="levelSlider" ';
                 volControl += 'onchange="changeVol(trackGain[' + i + '], this.value)"></div>';
@@ -165,75 +168,6 @@
 
         </script>
 
-        <style>
-            body {
-                background-color: linen;
-                font-size: 24px;
-            }
-
-            th, td {
-                font-size: 24px;
-            }
-
-            #player1 {
-                background-color: #00D2D2;
-                width: 450px;
-            }
-
-            #startstop {
-                background-color: #ffffff;
-            }
-
-            h1 {
-                color: maroon;
-                margin-left: 40px;
-            }
-
-            #PlayerTitle {
-                font-size: 60px;
-            }
-
-            .audioplayer {
-                font-size: 24px;
-            }
-
-            .selectInput {
-                font-size: 24px;
-            }
-
-            .gainControls {
-                display: inline;
-                font-size: 30px;
-            }
-
-            .trackTitles {
-                display: inline-block;
-                width: 150px;
-            }
-
-            .trackVols {
-                display: inline-block;
-            }
-
-            .titleItem {
-                height: 34px;
-            }
-
-            .levelItem {
-                height: 34px;
-            }
-
-            .button {
-                background-color: #4CAF50; /* Green */
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 24px;
-            }
-        </style>
     </head>
     <body>
         <div id="player1" class="audioplayer">

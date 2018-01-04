@@ -7,7 +7,7 @@
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100%; /* Full-width */
-    height: 25px; /* Specified height */
+    height: 34px; /* Specified height */
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
@@ -35,4 +35,80 @@
     height: 25px; /* Slider handle height */
     background: #4CAF50; /* Green background */
     cursor: pointer; /* Cursor on hover */
+}
+
+body {
+    background-color: linen;
+    font-size: 24px;
+}
+
+th, td {
+    font-size: 24px;
+}
+
+#player1 {
+    background-color: #B2B4B5;
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 450px;
+}
+
+#startstop {
+    width: 225;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    color: maroon;
+    margin-left: 40px;
+}
+
+#PlayerTitle {
+    font-size: 60px;
+}
+
+.audioplayer {
+    font-size: 24px;
+}
+
+.selectInput {
+    font-size: 24px;
+}
+
+.gainControls {
+    display: inline;
+    font-size: 30px;
+}
+
+.trackTitles {
+    display: inline-block;
+    width: 150px;
+    margin-left: 30px;
+}
+
+.trackVols {
+    display: inline-block;
+}
+
+.titleItem {
+    height: 34px;
+}
+
+.levelSlider {
+    height: 34px;
+}
+
+.button {
+    background-color: #3AADE7; /* Green */
+    border-color: black;
+    border-radius: 15%;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
 }
