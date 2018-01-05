@@ -48,6 +48,7 @@ th, td {
 
 #player1 {
     margin: auto;
+    padding: 10px;
     background-color: #B3CB95;
     border: 2px solid black;
     border-radius: 15px;
@@ -58,8 +59,6 @@ th, td {
     width: 225;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 h1 {
