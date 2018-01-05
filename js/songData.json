@@ -5,6 +5,12 @@ library = {
             "Soprano", "Alto", "Tenor", "Bass", "Descant"
         ]
     },
+    "Doxology": {
+        "name": "Doxology",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ]
+    },
     "JoyToTheWorld": {
         "name": "Joy To The World",
         "voices":[
