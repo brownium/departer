@@ -110,6 +110,10 @@
                 trackList[i].connect(trackGain[i]);
                 trackGain[i].connect(mainGain);
             }
+            var starter = document.getElementById("starter");
+            var stopper = document.getElementById("stopper");
+            starter.style.visibility = "visible";
+            stopper.style.visibility = "visible";
         }
 
         function startPlay() {
@@ -186,8 +190,8 @@
                 </div>
             </div>
             <div id="startstop">
-                <button onclick="startPlay()" class="button">play</button>
-                <button onclick="stopPlay()" class="button">stop</button>
+                <button onclick="startPlay()" id="starter" class="button">play</button>
+                <button onclick="stopPlay()" id="stopper" class="button">stop</button>
             </div>
         </div>
     </body>
