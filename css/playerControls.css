@@ -52,11 +52,11 @@ th, td {
     background-color: #B3CB95;
     border: 2px solid black;
     border-radius: 15px;
-    width: 450px;
+    width: 500px;
 }
 
 #startstop {
-    width: 225;
+    width: 450;
     margin-left: auto;
     margin-right: auto;
 }
@@ -101,6 +101,7 @@ h1 {
     height: 34px;
 }
 
+
 .button {
     background-color: #82A953; /* Green */
     border-color: #82A953;
@@ -111,7 +112,7 @@ h1 {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 24px;
+    font-size: 20px;
     visibility: hidden;
 }
 

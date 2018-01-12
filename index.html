@@ -52,6 +52,7 @@
                             return;
                         }
                         loader.bufferList[index] = buffer;
+                        console.log(buffer.duration)
                         if (++loader.loadCount == loader.urlList.length)
                         loader.onload(loader.bufferList);
                     },
@@ -69,12 +70,15 @@
         }
 
         BufferLoader.prototype.load = function() {
-            for (var i = 0; i < this.urlList.length; ++i)
-            this.loadBuffer(this.urlList[i], i);
+            for (var i = 0; i < this.urlList.length; ++i){
+                this.loadBuffer(this.urlList[i], i);
+            }
         }
 
 
         function init(song) {
+            document.getElementById("starter").disabled = true;
+            document.getElementById("loaderIndicator").style.visibility = "visible";
             var songData = library[song];
             var trackBuffers = [];
             for (var i=0; i<songData.voices.length; i++) {
@@ -112,11 +116,14 @@
             }
             var starter = document.getElementById("starter");
             var stopper = document.getElementById("stopper");
+            document.getElementById("loaderIndicator").style.visibility = "hidden";
             starter.style.visibility = "visible";
             stopper.style.visibility = "visible";
+            starter.disabled = false;
         }
 
         function startPlay() {
+
             var startTime = context.currentTime + .2;
             for (var i=0; i<trackList.length; i++) {
                 trackList[i].start(startTime);
@@ -127,6 +134,8 @@
             for (var i=0; i<trackList.length; i++) {
                 trackList[i].stop(0);
             }
+            document.getElementById("starter").disabled = false;
+            console.log(context.currentTime)
         }
 
 
@@ -191,6 +200,7 @@
             </div>
             <div id="startstop">
                 <button onclick="startPlay()" id="starter" class="button">play</button>
+                <button id="loaderIndicator" class="button">Loading Audio</button>
                 <button onclick="stopPlay()" id="stopper" class="button">stop</button>
             </div>
         </div>
