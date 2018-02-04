@@ -17,6 +17,12 @@ library = {
             "Soprano", "Alto", "Tenor", "Bass"
         ]
     },
+    "LetAllThingsNowLiving": {
+        "name": "Let All Things Now Living",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ]
+    },
     "LoHowARose": {
         "name": "Lo How A Rose",
         "voices":[
