@@ -180,31 +180,43 @@
             gaincontrols.innerHTML += '<input type="range" min="0" max="100" value="50" id="MainVol" class="levelSlider" onchange="changeVol(mainGain, this.value)">';
         }
 
+        function loadPDF(song) {
+            var pdf = library[song].pdf;
+            var scoreLink = '<embed src="PDF/' + pdf + '" width="800px" height="2100px" />';
+            var scoreDiv = document.getElementById("score");
+            scoreDiv.innerHTML = scoreLink;
+        }
+
 
         </script>
 
     </head>
     <body>
-        <div id="player1" class="audioplayer">
-            <div id="PlayerTitle">
-                Songs:<br>
-            </div>
-        	<select id="SongListDropDown" class="selectInput" onchange="init(this.value)">
-        	</select>
-        	<br>
-            <div id="songTitle1" class="songTitles">
-            </div>
-            <div id="gainControl1" class="gainControls">
-                <div id="trackTitle1" class="trackTitles">
+        <div id="Column1" class="PageColumn">
+            <div id="player1" class="audioplayer">
+                <div id="PlayerTitle">
+                    Songs:<br>
                 </div>
-                <div id="trackVol1" class="trackVols">
+            	<select id="SongListDropDown" class="selectInput" onchange="init(this.value); loadPDF(this.value)">
+            	</select>
+            	<br>
+                <div id="songTitle1" class="songTitles">
+                </div>
+                <div id="gainControl1" class="gainControls">
+                    <div id="trackTitle1" class="trackTitles">
+                    </div>
+                    <div id="trackVol1" class="trackVols">
+                    </div>
+                </div>
+                <div id="startstop">
+                    <button onclick="startPlay()" id="starter" class="button">play</button>
+                    <button id="loaderIndicator" class="button">Loading Audio</button>
+                    <button onclick="stopPlay()" id="stopper" class="button">stop</button>
                 </div>
             </div>
-            <div id="startstop">
-                <button onclick="startPlay()" id="starter" class="button">play</button>
-                <button id="loaderIndicator" class="button">Loading Audio</button>
-                <button onclick="stopPlay()" id="stopper" class="button">stop</button>
-            </div>
+        </div>
+        <div id="Column2" class="PageColumn">
+            <div id="score"></div>
         </div>
     </body>
 </html>

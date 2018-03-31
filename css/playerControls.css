@@ -47,6 +47,7 @@ th, td {
 }
 
 #player1 {
+    vertical-align: top;
     margin: auto;
     padding: 10px;
     background-color: #B3CB95;
@@ -64,6 +65,17 @@ th, td {
 h1 {
     color: maroon;
     margin-left: 40px;
+}
+
+#Column1 {
+    vertical-align: top;
+    width: 35%;
+    display: inline-block;
+}
+
+#Column2 {
+    width: 60%;
+    display: inline-block;
 }
 
 #PlayerTitle {
