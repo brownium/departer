@@ -1,4 +1,10 @@
 library = {
+    "ChristTheLordIsRisenToday": {
+        "name":"Christ the Lord is Risen Today",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ]
+    },
     "ComeThouLongExpectedJesus": {
         "name":"Come Thou Long Expected Jesus",
         "voices":[
