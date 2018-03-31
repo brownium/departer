@@ -11,7 +11,7 @@ library = {
         "voices":[
             "Soprano", "Alto", "Tenor", "Bass", "Descant"
         ],
-        "pdf":"ComeThouLongExpecteJesus_5Parts.pdf"
+        "pdf":"ComeThouLongExpectedJesus.pdf"
     },
     "Doxology": {
         "name": "Doxology",
