@@ -1,4 +1,11 @@
 library = {
+    "AMightyFortress": {
+        "name":"A Mighty Fortress Is Our God",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"AMightyFortress_Score.pdf"
+    },
     "ChristTheLordIsRisenToday": {
         "name":"Christ the Lord is Risen Today",
         "voices":[
