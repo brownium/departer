@@ -1,0 +1,93 @@
+library = {
+    "AMightyFortress": {
+        "name":"A Mighty Fortress Is Our God",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"AMightyFortress_Score.pdf"
+    },
+    "ChristTheLordIsRisenToday": {
+        "name":"Christ the Lord is Risen Today",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"ChristTheLordIsRisenToday_Score.pdf"
+    },
+    "ComeThouLongExpectedJesus": {
+        "name":"Come Thou Long Expected Jesus",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass", "Descant"
+        ],
+        "pdf":"ComeThouLongExpectedJesus.pdf"
+    },
+    "Doxology": {
+        "name": "Doxology",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"Doxology_ Score.pdf"
+    },
+    "JoyToTheWorld": {
+        "name": "Joy To The World",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"JoyToTheWorld.pdf"
+    },
+    "LetAllThingsNowLiving": {
+        "name": "Let All Things Now Living",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"LetAllThingsNowLiving_Score.pdf"
+    },
+    "LoHowARose": {
+        "name": "Lo How A Rose",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"LoHowARose_E_Flat.pdf"
+    },
+    "MyHopeIsNothingLess": {
+        "name": "My Hope Is Nothing Less",
+        "voices": [
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"MyHopeIsNothingLess_Score.pdf"
+    },
+    "OComeOComeEmmanuel": {
+        "name": "O Come O Come Emmanuel",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"OComeOComeEmmanuel.pdf"
+    },
+    "OHolyNight": {
+        "name": "O Holy Night",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"OHolyNight.pdf"
+    },
+    "OLittleTownOfBethlehem": {
+        "name": "O Little Town of Bethlehem",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"OLittleTownOfBethlehem_Score.pdf"
+    },
+    "OnceInRoyalDavidsCity": {
+        "name": "Once In Royal David's City",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"OnceInRoyalDavidsCity_Score"
+    },
+    "SilentNight": {
+        "name": "Silent Night",
+        "voices":[
+            "Soprano", "Alto", "Tenor", "Bass"
+        ],
+        "pdf":"SilentNight_Score"
+    },
+};
