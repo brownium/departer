@@ -118,7 +118,7 @@ library = {
             "Tenor",
             "Bass"
         ],
-        "pdf": "OnceInRoyalDavidsCity_Score"
+        "pdf": "OnceInRoyalDavidsCity_Score.pdf"
     },
     "SilentNight": {
         "name": "Silent Night",
@@ -128,7 +128,7 @@ library = {
             "Tenor",
             "Bass"
         ],
-        "pdf": "SilentNight_Score"
+        "pdf": "SilentNight_Score.pdf"
     },
     "SoldiersOfChristArise": {
         "name": "Soldiers Of Christ, Arise",
@@ -138,6 +138,6 @@ library = {
             "Tenor",
             "Bass"
         ],
-        "pdf": "SoldiersOfChristArise4Parts_Score"
+        "pdf": "SoldiersOfChristArise4Parts_Score.pdf"
     }
 };
