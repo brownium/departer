@@ -120,6 +120,16 @@ library = {
         ],
         "pdf": "OnceInRoyalDavidsCity_Score.pdf"
     },
+    "OnwardChristianSoldiers": {
+        "name": "Onward Christian Soldiers",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "OnwardChristianSoldiers.pdf"
+    },
     "SilentNight": {
         "name": "Silent Night",
         "voices": [
