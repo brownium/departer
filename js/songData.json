@@ -48,7 +48,7 @@ library = {
             "Tenor",
             "Bass"
         ],
-        "pdf": "GodOfOurFathers.pdf",
+        "pdf": "GodOfOurFathers.pdf"
     },
     "JoyToTheWorld": {
         "name": "Joy To The World",
@@ -99,6 +99,15 @@ library = {
             "Bass"
         ],
         "pdf": "OComeOComeEmmanuel.pdf"
+    },
+    "OComeOComeEmmanuel_Instrumental": {
+        "name": "O Come O Come Emmanuel (Instrumental)",
+        "voices": [
+            "French_Horn",
+            "Trumpet",
+            "Trombone"
+        ],
+        "pdf": "OComeOComeEmmanuel_Instrumental.pdf"
     },
     "OHolyNight": {
         "name": "O Holy Night",
