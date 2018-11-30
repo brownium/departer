@@ -1,4 +1,14 @@
 library = {
+    "AllCreaturesOfOurGodAndKing": {
+        "name": "All Creatures of Our God and King",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "AllCreaturesOfOurGodAndKing.pdf"
+    },
     "AMightyFortress": {
         "name": "A Mighty Fortress Is Our God",
         "voices": [
