@@ -149,5 +149,15 @@ library = {
             "Bass"
         ],
         "pdf": "SoldiersOfChristArise4Parts_Score.pdf"
-    }
+    },
+    "WhileShepherdsWatched": {
+        "name": "While Shepherds Watched",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "WhileShepherdsWatched.pdf"
+    },
 };
