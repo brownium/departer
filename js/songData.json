@@ -1,4 +1,14 @@
 library = {
+    "AllCreaturesOfOurGodAndKing": {
+        "name": "All Creatures of Our God and King",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "AllCreaturesOfOurGodAndKing.pdf"
+    },
     "AMightyFortress": {
         "name": "A Mighty Fortress Is Our God",
         "voices": [
@@ -39,6 +49,16 @@ library = {
             "Bass"
         ],
         "pdf": "Doxology_ Score.pdf"
+    },
+    "GodOfOurFathers": {
+        "name": "God of Our Fathers",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "GodOfOurFathers.pdf"
     },
     "JoyToTheWorld": {
         "name": "Joy To The World",
@@ -90,6 +110,15 @@ library = {
         ],
         "pdf": "OComeOComeEmmanuel.pdf"
     },
+    "OComeOComeEmmanuel_Instrumental": {
+        "name": "O Come O Come Emmanuel (Instrumental)",
+        "voices": [
+            "French_Horn",
+            "Trumpet",
+            "Trombone"
+        ],
+        "pdf": "OComeOComeEmmanuel_Instrumental.pdf"
+    },
     "OHolyNight": {
         "name": "O Holy Night",
         "voices": [
@@ -119,6 +148,16 @@ library = {
             "Bass"
         ],
         "pdf": "OnceInRoyalDavidsCity_Score.pdf"
+    },
+    "OnwardChristianSoldiers": {
+        "name": "Onward Christian Soldiers",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "OnwardChristianSoldiers.pdf"
     },
     "SilentNight": {
         "name": "Silent Night",
