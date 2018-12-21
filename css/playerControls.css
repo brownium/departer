@@ -69,12 +69,12 @@ h1 {
 
 #Column1 {
     vertical-align: top;
-    width: 35%;
+    width: 50%;
     display: inline-block;
 }
 
 #Column2 {
-    width: 60%;
+    width: 50%;
     display: inline-block;
 }
 
