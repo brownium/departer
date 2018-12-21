@@ -132,6 +132,14 @@
             }
         }
 
+        function rewindPlay() {
+
+            var startTime = context.currentTime + .2;
+            for (var i=0; i<trackList.length; i++) {
+                trackList[i].start(startTime);
+            }
+        }
+
         function stopPlay() {
             for (var i=0; i<trackList.length; i++) {
                 trackList[i].stop(0);
@@ -211,6 +219,7 @@
                 <div id="startstop">
                     <button onclick="startPlay()" id="starter" class="button">play</button>
                     <button id="loaderIndicator" class="button">Loading Audio</button>
+                    <button onclick="rewindPlay()" id="stopper" class="button">stop</button>
                     <button onclick="stopPlay()" id="stopper" class="button">stop</button>
                 </div>
             </div>
