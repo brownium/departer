@@ -128,9 +128,6 @@
 
         function startPlay() {
 
-            for (var i=0; i<trackList.length; i++) {
-                trackList[i].stop(0);
-            }
             init(document.getElementById('SongListDropDown').value)
             var startTime = context.currentTime + .2;
             for (var i=0; i<trackList.length; i++) {
