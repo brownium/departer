@@ -110,6 +110,16 @@ library = {
         ],
         "pdf": "MyHopeIsNothingLess_Score.pdf"
     },
+    "OComeAllYeFaithful": {
+        "name": "O Come All Ye Faithful",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "OComeAllYeFaithful.pdf"
+    },
     "OComeOComeEmmanuel": {
         "name": "O Come O Come Emmanuel",
         "voices": [
