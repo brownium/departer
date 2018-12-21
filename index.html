@@ -136,7 +136,9 @@
         function rewindPlay() {
 
             var startTime = context.currentTime + .2;
+            console.log("startTime = ", startTime)
             for (var i=0; i<trackList.length; i++) {
+                trackList[i].stop(0);
                 trackList[i].start(startTime);
             }
         }
