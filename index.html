@@ -193,7 +193,7 @@
 
         function loadPDF(song) {
             var pdf = library[song].pdf;
-            var scoreLink = '<embed src="PDF/' + pdf + ' />';
+            var scoreLink = '<embed src="PDF/' + pdf + '" width="100%" height="100%" />';
             var scoreDiv = document.getElementById("score");
             scoreDiv.innerHTML = scoreLink;
         }
