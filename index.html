@@ -79,6 +79,7 @@
         function init(song) {
             document.getElementById("starter").disabled = true;
             document.getElementById("starter").style.visibility = "hidden";
+            document.getElementById("reStarter").style.visibility = "hidden";
             document.getElementById("stopper").style.visibility = "hidden";
             document.getElementById("loaderIndicator").style.visibility = "visible";
             var songData = library[song];
@@ -120,7 +121,8 @@
             var stopper = document.getElementById("stopper");
             document.getElementById("loaderIndicator").style.visibility = "hidden";
             starter.style.visibility = "visible";
-            stopper.style.visibility = "visible";
+            reStarter.style.visibility = "visible";
+            //stopper.style.visibility = "visible";
             starter.disabled = false;
         }
 
@@ -130,6 +132,15 @@
             for (var i=0; i<trackList.length; i++) {
                 trackList[i].start(startTime);
             }
+        }
+
+        function rePlay() {
+
+            for (var i=0; i<trackList.length; i++) {
+                trackList[i].stop(0);
+            }
+            init(document.getElementById('SongListDropDown').value)
+
         }
 
         function stopPlay() {
@@ -211,6 +222,7 @@
                 <div id="startstop">
                     <button onclick="startPlay()" id="starter" class="button">play</button>
                     <button id="loaderIndicator" class="button">Loading Audio</button>
+                    <button onclick="rePlay()" id="reStarter" class="button">rewind</button>
                     <button onclick="stopPlay()" id="stopper" class="button">stop</button>
                 </div>
             </div>

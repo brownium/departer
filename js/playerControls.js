@@ -128,6 +128,13 @@ function stopPlay() {
 }
 
 
+function rewind() {
+    for (var i=0; i<trackList.length; i++) {
+        trackList[i].currentTime = 0;
+    }
+}
+
+
 function changeVol(track, volLevel) {
     var level = volLevel/100;
     track.gain.value = level;
