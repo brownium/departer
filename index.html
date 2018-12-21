@@ -128,7 +128,6 @@
 
         function startPlay() {
 
-            document.getElementById("starter").visibility = "hidden";
             var startTime = context.currentTime + .2;
             for (var i=0; i<trackList.length; i++) {
                 trackList[i].start(startTime);
@@ -221,7 +220,7 @@
                     </div>
                 </div>
                 <div id="startstop">
-                    <button onclick="startPlay()" id="starter" class="button">play</button>
+                    <button onclick="visibility=hidden; startPlay()" id="starter" class="button">play</button>
                     <button id="loaderIndicator" class="button">Loading Audio</button>
                     <button onclick="rePlay()" id="reStarter" class="button">rewind</button>
                     <button onclick="stopPlay()" id="stopper" class="button">stop</button>
