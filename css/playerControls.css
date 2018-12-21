@@ -124,7 +124,7 @@ h1 {
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: inline;
     font-size: 20px;
     visibility: hidden;
 }
