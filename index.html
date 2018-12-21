@@ -120,6 +120,7 @@
             var stopper = document.getElementById("stopper");
             document.getElementById("loaderIndicator").style.visibility = "hidden";
             starter.style.visibility = "visible";
+            rewinder.style.visibility = "visible";
             stopper.style.visibility = "visible";
             starter.disabled = false;
         }
@@ -219,7 +220,7 @@
                 <div id="startstop">
                     <button onclick="startPlay()" id="starter" class="button">play</button>
                     <button id="loaderIndicator" class="button">Loading Audio</button>
-                    <button onclick="rewindPlay()" id="stopper" class="button">stop</button>
+                    <button onclick="rewindPlay()" id="rewinder" class="button">stop</button>
                     <button onclick="stopPlay()" id="stopper" class="button">stop</button>
                 </div>
             </div>
