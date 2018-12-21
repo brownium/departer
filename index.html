@@ -128,7 +128,7 @@
 
         function startPlay() {
 
-            init(document.getElementById('SongListDropDown').value)
+            document.getElementById("starter").visibility = "hidden";
             var startTime = context.currentTime + .2;
             for (var i=0; i<trackList.length; i++) {
                 trackList[i].start(startTime);
