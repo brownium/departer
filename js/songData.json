@@ -70,6 +70,16 @@ library = {
         ],
         "pdf": "GodOfOurFathers.pdf"
     },
+    "HarkTheHaraldAngelsSing": {
+        "name": "Hark The Herald Angels Sing",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "HarkTheHaraldAngelsSing.pdf"
+    },
     "JoyToTheWorld": {
         "name": "Joy To The World",
         "voices": [
