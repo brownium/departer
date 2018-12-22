@@ -199,6 +199,16 @@ library = {
         ],
         "pdf": "SoldiersOfChristArise4Parts_Score.pdf"
     },
+    "WhatChildIsThis": {
+        "name": "What Child is This",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "WhatChildIsThis.pdf"
+    },
     "WhileShepherdsWatched": {
         "name": "While Shepherds Watched",
         "voices": [
