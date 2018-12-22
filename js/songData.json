@@ -70,7 +70,7 @@ library = {
         ],
         "pdf": "GodOfOurFathers.pdf"
     },
-    "HarkTheHaraldAngelsSing": {
+    "HarkTheHeraldAngelsSing": {
         "name": "Hark The Herald Angels Sing",
         "voices": [
             "Soprano",
@@ -78,7 +78,7 @@ library = {
             "Tenor",
             "Bass"
         ],
-        "pdf": "HarkTheHaraldAngelsSing.pdf"
+        "pdf": "HarkTheHeraldAngelsSing.pdf"
     },
     "JoyToTheWorld": {
         "name": "Joy To The World",
