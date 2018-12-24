@@ -29,6 +29,16 @@ library = {
         ],
         "pdf": "AngelsWeHaveHeardOnHigh.pdf"
     },
+    "AwayInAManger_Mueller": {
+        "name": "Away In A Manger - Mueller",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "AwayInAManger.pdf"
+    },
     "ChristTheLordIsRisenToday": {
         "name": "Christ the Lord is Risen Today",
         "voices": [
