@@ -64,7 +64,6 @@ startstop {
 
 a {
   color: #B3CB95;
-  horizonal-align: center;
 }
 
 h1 {
@@ -86,6 +85,10 @@ h1 {
 
 #PlayerTitle {
     font-size: 60px;
+}
+
+#ContactLink {
+    horizonal-align: center;
 }
 
 .audioplayer {
