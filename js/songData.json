@@ -209,6 +209,16 @@ library = {
         ],
         "pdf": "OnwardChristianSoldiers.pdf"
     },
+    "SaviorLikeAShepherdLeadUs": {
+        "name": "Savior Like A Shepherd Lead Us",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "SaviorLikeAShepherdLeadUs.pdf"
+    },
     "SilentNight": {
         "name": "Silent Night",
         "voices": [
