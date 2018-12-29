@@ -70,6 +70,16 @@ library = {
         ],
         "pdf": "Doxology_ Score.pdf"
     },
+    "FairestLordJesus": {
+        "name": "Fairest Lord Jesus",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "FairestLordJesus.pdf"
+    },
     "GodOfOurFathers": {
         "name": "God of Our Fathers",
         "voices": [
