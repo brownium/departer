@@ -39,6 +39,16 @@ library = {
         ],
         "pdf": "AwayInAManger_Mueller.pdf"
     },
+    "BlessedAssurance": {
+        "name": "Blessed Assurance",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "BlessedAssurance.pdf"
+    },
     "ChristTheLordIsRisenToday": {
         "name": "Christ the Lord is Risen Today",
         "voices": [
