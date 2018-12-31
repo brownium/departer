@@ -90,6 +90,16 @@ library = {
         ],
         "pdf": "FairestLordJesus.pdf"
     },
+    "GodIsSoGood": {
+        "name": "God Is So Good",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "GodIsSoGood.pdf"
+    },
     "GodOfOurFathers": {
         "name": "God of Our Fathers",
         "voices": [
