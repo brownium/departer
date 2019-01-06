@@ -269,6 +269,16 @@ library = {
         ],
         "pdf": "SoldiersOfChristArise4Parts_Score.pdf"
     },
+    "ThereIsAFountainFilledWithBlood": {
+        "name": "There is a Fountain Filled with Blood",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "ThereIsAFountainFilledWithBlood.pdf"
+    },
     "ToGodBeTheGlory": {
         "name": "To God be the Glory",
         "voices": [
