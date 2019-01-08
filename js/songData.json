@@ -9,6 +9,26 @@ library = {
         ],
         "pdf": "AllCreaturesOfOurGodAndKing.pdf"
     },
+    "AllGloryLaudAndHonor": {
+        "name": "All Glory, Laud, and Honor",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "AllGloryLaudAndHonor.pdf"
+    },
+    "AllHailThePower": {
+        "name": "All Hail the Power of Jesus Name",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "AllHailThePower.pdf"
+    },
     "AMightyFortress": {
         "name": "A Mighty Fortress Is Our God",
         "voices": [
@@ -38,6 +58,16 @@ library = {
             "Bass"
         ],
         "pdf": "AwayInAManger_Mueller.pdf"
+    },
+    "BeThouMyVision": {
+        "name": "Be Thou My Vision",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "BeThouMyVision.pdf"
     },
     "BlessedAssurance": {
         "name": "Blessed Assurance",
