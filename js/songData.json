@@ -190,6 +190,16 @@ library = {
         ],
         "pdf": "LoHowARose_E_Flat.pdf"
     },
+    "MorePreciousThanSilver": {
+        "name": "More Precious Than Silver",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "MorePreciousThanSilver.pdf"
+    },
     "MyHopeIsNothingLess": {
         "name": "My Hope Is Nothing Less",
         "voices": [
