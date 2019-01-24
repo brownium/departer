@@ -133,6 +133,8 @@ library = {
     "GodOfOurFathers": {
         "name": "God of Our Fathers",
         "voices": [
+            "Trumpet",
+            "Trombone",
             "Soprano",
             "Alto",
             "Tenor",
@@ -350,5 +352,3 @@ library = {
         "pdf": "WhileShepherdsWatchedTheirFlocks.pdf"
     },
 };
-
-
