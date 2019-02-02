@@ -112,10 +112,23 @@
                 return allText;
             }
 
+            function gd5(url) {
+                fetch(url).then((res) => {
+                  res.text().then((xmlTxt) => {
+                    var domParser = new DOMParser()
+                    let doc = domParser.parseFromString(xmlTxt, 'text/xml')
+                    doc.querySelectorAll('item').forEach((item) => {
+                       let h1 = document.createElement('h1')
+                        h1.textContent = item.querySelector('title').textContent
+                         document.querySelector('output').appendChild(h1)
+                       })
+                     })
+                })
+            }
 
     </script>
 </head>
-<body onload="readTextFile('feed.rss')">
+<body onload="gd5('https://fawm.org/songs/feed/')">
 <audio controls="controls">
   <source src="http://brownium.com/media/audio/LetAllTheEarthRepeatIt.mp3" type="audio/mpeg" />
 Your browser does not support the audio element.
