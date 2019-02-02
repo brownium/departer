@@ -93,7 +93,7 @@
         }
 
 
-        function readTextFile(file)
+        function gd5(file)
             {
                 var rawFile = new XMLHttpRequest();
                 rawFile.open("GET", file, false);
@@ -112,7 +112,7 @@
                 return allText;
             }
 
-            function gd5(url) {
+            function gd6(url) {
                 fetch(url).then((res) => {
                   res.text().then((xmlTxt) => {
                     var domParser = new DOMParser()
@@ -128,9 +128,9 @@
 
     </script>
 </head>
-<body onload="gd5('https://fawm.org/songs/feed/')">
+<body onload="gd5('./feed.rss')">
 <audio controls="controls">
-  <source src="http://brownium.com/media/audio/LetAllTheEarthRepeatIt.mp3" type="audio/mpeg" />
+  <source src="http://adamhill.ca/music/fawm-2019/Adam%20Hill%20-%20Double%20Decker%20Tuque.mp3" type="audio/mpeg" />
 Your browser does not support the audio element.
 </audio>
 </body>
