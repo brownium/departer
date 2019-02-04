@@ -301,6 +301,16 @@ library = {
         ],
         "pdf": "SilentNight_Score.pdf"
     },
+    "SoftlyAndTenderly": {
+        "name": "Softly and Tenderly",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "SoftlyAndTenderly.pdf"
+    },
     "SoldiersOfChristArise": {
         "name": "Soldiers Of Christ, Arise",
         "voices": [
