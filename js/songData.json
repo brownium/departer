@@ -39,6 +39,16 @@ library = {
         ],
         "pdf": "AMightyFortress_Score.pdf"
     },
+    "AndCanItBe": {
+        "name": "And Can It Be That I Should Gain",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "AndCanItBe.pdf"
+    },
     "AngelsWeHaveHeardOnHigh": {
         "name": "Angels We Have Heard On High",
         "voices": [
