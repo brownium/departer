@@ -331,6 +331,16 @@ library = {
         ],
         "pdf": "SoldiersOfChristArise4Parts_Score.pdf"
     },
+    "TheReasonWhy": {
+        "name": "The Reason Why",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "SoldiersOfChristArise4Parts_Score.pdf"
+    },
     "ThereIsAFountain": {
         "name": "There is a Fountain Filled with Blood",
         "voices": [
