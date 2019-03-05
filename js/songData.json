@@ -331,6 +331,16 @@ library = {
         ],
         "pdf": "SoldiersOfChristArise4Parts_Score.pdf"
     },
+    "TheDayOfTheResurrection": {
+        "name": "The Day of the Resurrection",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "TheDayOfTheResurrection.pdf"
+    },
     "TheReasonWhy": {
         "name": "The Reason Why",
         "voices": [
