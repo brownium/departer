@@ -361,6 +361,16 @@ library = {
         ],
         "pdf": "ThereIsAFountainFilledWithBlood.pdf"
     },
+    "WhenPeaceLikeARiver": {
+        "name": "When Peace Like a River",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "WhenPeaceLikeARiver.pdf"
+    },
     "ToGodBeTheGlory": {
         "name": "To God be the Glory",
         "voices": [
