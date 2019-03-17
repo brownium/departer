@@ -331,6 +331,26 @@ library = {
         ],
         "pdf": "SoldiersOfChristArise4Parts_Score.pdf"
     },
+    "TheDayOfTheResurrection": {
+        "name": "The Day of the Resurrection",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "TheDayOfTheResurrection.pdf"
+    },
+    "TheReasonWhy": {
+        "name": "The Reason Why",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "TheReasonWhy.pdf"
+    },
     "ThereIsAFountain": {
         "name": "There is a Fountain Filled with Blood",
         "voices": [
@@ -340,6 +360,16 @@ library = {
             "Bass"
         ],
         "pdf": "ThereIsAFountainFilledWithBlood.pdf"
+    },
+    "WhenPeaceLikeARiver": {
+        "name": "When Peace Like a River",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "WhenPeaceLikeARiver.pdf"
     },
     "ToGodBeTheGlory": {
         "name": "To God be the Glory",
