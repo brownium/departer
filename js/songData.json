@@ -29,6 +29,16 @@ library = {
         ],
         "pdf": "AllHailThePower.pdf"
     },
+    "AllToJesusISurrender": {
+        "name": "All to Jesus, I Surrender",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "AllToJesusISurrender.pdf"
+    },
     "AMightyFortress": {
         "name": "A Mighty Fortress Is Our God",
         "voices": [
