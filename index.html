@@ -180,6 +180,7 @@
             gaincontrols.innerHTML = "";
             for (var i=0; i<library[song]["voices"].length; i++) {
                 let volTitle = '<div class="titleItem">' + library[song]["voices"][i] + '</div>';
+                let solo = '<input type="checkbox" name="Solo", value=library[song]["voices"][i]>'
                 let volControl = '<div class="levelSlider"><input type="range" min="0" max="100" value="100" ';
                 volControl += 'id=' + library[song]["voices"].name + '"Volume" ';
                 volControl += 'class="levelSlider" ';
