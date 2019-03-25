@@ -115,8 +115,7 @@ library = {
             "Soprano",
             "Alto",
             "Tenor",
-            "Bass",
-            "Descant"
+            "Bass"
         ],
         "pdf": "ComeThouFount.pdf"
     },
