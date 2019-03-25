@@ -109,6 +109,17 @@ library = {
         ],
         "pdf": "ChristTheLordIsRisenToday_Score.pdf"
     },
+    "ComeThouFount": {
+        "name": "Come Thou Fount",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass",
+            "Descant"
+        ],
+        "pdf": "ComeThouFount.pdf"
+    },
     "ComeThouLongExpectedJesus": {
         "name": "Come Thou Long Expected Jesus",
         "voices": [
