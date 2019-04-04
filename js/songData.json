@@ -192,6 +192,16 @@ library = {
         ],
         "pdf": "HarkTheHeraldAngelsSing.pdf"
     },
+    "InTheSweetByAndBy": {
+        "name": "In the Sweet By and By",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "InTheSweetByAndBy.pdf"
+    },
     "JoyToTheWorld": {
         "name": "Joy To The World",
         "voices": [
