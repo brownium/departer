@@ -411,6 +411,16 @@ library = {
         ],
         "pdf": "ToGodBeTheGlory.pdf"
     },
+    "WeihnachtsgesangMitEcho": {
+        "name": "Weihnachtsgesang Mit Echo",
+        "voices": [
+            "Tenor1",
+            "Tenor2",
+            "Baritone",
+            "Bass"
+        ],
+        "pdf": "WhatChildIsThis.pdf"
+    },
     "WhatChildIsThis": {
         "name": "What Child is This",
         "voices": [
