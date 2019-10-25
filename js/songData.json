@@ -150,6 +150,16 @@ library = {
         ],
         "pdf": "FairestLordJesus.pdf"
     },
+    "Frieden": {
+        "name": "Frieden",
+        "voices": [
+            "Tenor1",
+            "Tenor2",
+            "Baritone",
+            "Bass"
+        ],
+        "pdf": "Frieden.pdf"
+    },
     "GodIsSoGood": {
         "name": "God Is So Good",
         "voices": [
