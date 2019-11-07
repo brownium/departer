@@ -137,7 +137,6 @@ library = {
             "Alto",
             "Tenor",
             "Bass",
-            "Descant"
         ],
         "pdf": "DerSternZuBethlehem.pdf"
     },
