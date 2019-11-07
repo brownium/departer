@@ -130,6 +130,17 @@ library = {
         ],
         "pdf": "ComeThouLongExpectedJesus.pdf"
     },
+    "DerSternZuBethlehem": {
+        "name": "Der Stern zu Bethlehem",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass",
+            "Descant"
+        ],
+        "pdf": "DerSternZuBethlehem.pdf"
+    },
     "Doxology": {
         "name": "Doxology",
         "voices": [
