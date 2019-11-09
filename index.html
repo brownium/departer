@@ -3,158 +3,86 @@
         <title>Octopod Audio Player</title>
         <script type="text/javascript" src="./js/songData.json"></script>
         <link rel="stylesheet" type="text/css" href="css/playerControls.css">
+        <script src="/node_modules/howler/dist/howler.js"></script>
+
         <script>
         "use strict";
 
         var trackList = [];
         var mainGain;
         var trackGain = [];
-
-        var bufferLoader
-
-        function audioContextCheck() {
-            if (typeof AudioContext !== "undefined") {
-                return new AudioContext();
-            } else if (typeof webkitAudioContext !== "undefined") {
-                return new webkitAudioContext();
-            } else if (typeof mozAudioContext !== "undefined") {
-                return new mozAudioContext();
-            } else {
-                throw new Error('AudioContext not supported');
-            }
-        }
-
-        var context = audioContextCheck();
-
-        function BufferLoader(context, urlList, callback) {
-            this.context = context;
-            this.urlList = urlList;
-            this.onload = callback;
-            this.bufferList = new Array();
-            this.loadCount = 0;
-        }
-
-        BufferLoader.prototype.loadBuffer = function(url, index) {
-            // Load buffer asynchronously
-            var request = new XMLHttpRequest();
-            request.open("GET", url, true);
-            request.responseType = "arraybuffer";
-
-            var loader = this;
-
-            request.onload = function() {
-                // Asynchronously decode the audio file data in request.response
-                loader.context.decodeAudioData(
-                    request.response,
-                    function(buffer) {
-                        if (!buffer) {
-                            alert('error decoding file data: ' + url);
-                            return;
-                        }
-                        loader.bufferList[index] = buffer;
-                        console.log(buffer.duration)
-                        if (++loader.loadCount == loader.urlList.length)
-                        loader.onload(loader.bufferList);
-                    },
-                    function(error) {
-                    console.error('decodeAudioData error', error);
-                    }
-                );
-            }
-
-            request.onerror = function() {
-            alert('BufferLoader: XHR error');
-            }
-
-            request.send();
-        }
-
-        BufferLoader.prototype.load = function() {
-            for (var i = 0; i < this.urlList.length; ++i){
-                this.loadBuffer(this.urlList[i], i);
-            }
-        }
-
+        var audioTrack = [];
 
         function init(song) {
-            document.getElementById("starter").disabled = true;
-            document.getElementById("starter").style.visibility = "hidden";
-            document.getElementById("reStarter").style.visibility = "hidden";
-            document.getElementById("stopper").style.visibility = "hidden";
-            document.getElementById("loaderIndicator").style.visibility = "visible";
-            var songData = library[song];
-            var trackBuffers = [];
-            for (var i=0; i<songData.voices.length; i++) {
-                trackBuffers.push("./MP3/" + song + "/" + songData.voices[i] + ".mp3");
-            }
-
-            bufferLoader = new BufferLoader(
-                context,
-                trackBuffers,
-                finishedLoading
-            );
-
-            console.log("loading");
-            bufferLoader.load();
-            console.log("loaded");
-            buildControls(song);
-        }
-
-
-        function finishedLoading(bufferList) {
-            // Create two sources and play them both together.
-            mainGain = context.createGain();
-            mainGain.gain.value = 1;
-            mainGain.connect(context.destination);
-
-            trackList = [];
-
-            for (var i=0; i<bufferList.length; i++) {
-                trackList[i]=context.createBufferSource();
-                trackList[i].buffer = bufferList[i];
-                trackGain[i] = context.createGain();
-                trackGain[i].gain.value = 1;
-                trackList[i].connect(trackGain[i]);
-                trackGain[i].connect(mainGain);
-            }
-            var starter = document.getElementById("starter");
-            var stopper = document.getElementById("stopper");
+            document.getElementById("starter").style.visibility = "visible";
+            document.getElementById("pauser").style.visibility = "visible";
+            document.getElementById("stopper").style.visibility = "visible";
             document.getElementById("loaderIndicator").style.visibility = "hidden";
-            starter.style.visibility = "visible";
-            reStarter.style.visibility = "visible";
-            //stopper.style.visibility = "visible";
-            starter.disabled = false;
+            var songData = library[song];
+            var trackList = [];
+            let tracktitles = document.getElementById('trackTitle1');
+            let gaincontrols = document.getElementById('trackVol1');
+            tracktitles.innerHTML = "";
+            gaincontrols.innerHTML = "";
+            for (var i=0; i<songData.voices.length; i++) {
+                let trackName = songData.voices[i] + "Track"
+                let track = "/MP3/" + song + "/" + songData.voices[i] + ".mp3"
+                trackList.push(track);
+                let audio = new Howl({src: [track]});
+                var nextTrack = new Howl({src: [track]})
+                console.log(track)
+                audioTrack.push(nextTrack);
+                console.log(track);
+                let volTitle = '<div class="titleItem">' + library[song]["voices"][i] + '</div>';
+                let volControl = '<div class="levelSlider"><input type="range" min="0" max="100" value="100" ';
+                volControl += 'id=' + library[song]["voices"][i] + 'Volume ';
+                volControl += 'class="levelSlider" ';
+                volControl += 'onchange=audioTrack[' + i + '].volume(this.value/100)></div>';
+                console.log(volControl);
+                tracktitles.innerHTML += volTitle;
+                gaincontrols.innerHTML += volControl;
+
+            }
+            tracktitles.innerHTML += "Master Vol";
+            gaincontrols.innerHTML += '<input type="range" min="0" max="100" value="100" id="MainVol" class="levelSlider" onchange="changeVol(mainGain, this.value)">';
+
+            console.log("loaded");
         }
+
 
         function startPlay() {
-
-            var startTime = context.currentTime + .2;
-            for (var i=0; i<trackList.length; i++) {
-                trackList[i].start(startTime);
+            for (var i=0; i<audioTrack.length; i++) {
+                audioTrack[i].play();
             }
         }
 
-        function rePlay() {
 
-            for (var i=0; i<trackList.length; i++) {
-                trackList[i].stop(0);
+        function pausePlay() {
+            for (var i=0; i<audioTrack.length; i++) {
+                audioTrack[i].pause();
             }
-            init(document.getElementById('SongListDropDown').value)
-
         }
+
 
         function stopPlay() {
-            for (var i=0; i<trackList.length; i++) {
-                trackList[i].stop(0);
+            for (var i=0; i<audioTrack.length; i++) {
+                audioTrack[i].stop();
             }
-            document.getElementById("starter").disabled = false;
-            console.log(context.currentTime)
         }
 
 
-        function changeVol(track, volLevel) {
-            var level = volLevel/100;
-            track.gain.value = level;
+        function setVolume(level) {
+            if (level <= 0) {
+                level = 0;
+            } else if (level >= 100) {
+                level = 1;
+            } else {
+                level = level / 100;
+            }
+            for (var i=0; i<audioTrack.length; i++) {
+                audioTrack[i].volume(level);
+                console.log(level)
+            }
         }
 
         window.onload = function() {
@@ -173,23 +101,6 @@
             }
         }
 
-        function buildControls(song) {
-            let tracktitles = document.getElementById('trackTitle1');
-            let gaincontrols = document.getElementById('trackVol1');
-            tracktitles.innerHTML = "";
-            gaincontrols.innerHTML = "";
-            for (var i=0; i<library[song]["voices"].length; i++) {
-                let volTitle = '<div class="titleItem">' + library[song]["voices"][i] + '</div>';
-                let volControl = '<div class="levelSlider"><input type="range" min="0" max="100" value="100" ';
-                volControl += 'id=' + library[song]["voices"].name + '"Volume" ';
-                volControl += 'class="levelSlider" ';
-                volControl += 'onchange="changeVol(trackGain[' + i + '], this.value)"></div>';
-                tracktitles.innerHTML += volTitle;
-                gaincontrols.innerHTML += volControl;
-            }
-            tracktitles.innerHTML += "Master Vol";
-            gaincontrols.innerHTML += '<input type="range" min="0" max="100" value="100" id="MainVol" class="levelSlider" onchange="changeVol(mainGain, this.value)">';
-        }
 
         function loadPDF(song) {
             var pdf = library[song].pdf;
@@ -198,8 +109,18 @@
             scoreDiv.innerHTML = scoreLink;
         }
 
-
         </script>
+
+        <script>
+
+            var vol = 1
+
+            var audio_file = new Howl({
+                src: ['/MP3/AndCanItBe/Soprano.mp3', '/MP3/AndCanItBe/Alto.mp3'],
+                volume: vol
+            });
+        </script>
+
 
     </head>
     <body>
@@ -223,9 +144,9 @@
                     </div>
                 </div>
                 <div id="startstop">
-                    <button onclick="disabled=true; startPlay()" id="starter" class="button">play</button>
+                    <button onclick="startPlay()" id="starter" class="button">play</button>
                     <button id="loaderIndicator" class="button">Loading Audio</button>
-                    <button onclick="rePlay()" id="reStarter" class="button">stop/rewind</button>
+                    <button onclick="pausePlay()" id="pauser" class="button">pause</button>
                     <button onclick="stopPlay()" id="stopper" class="button">stop</button>
                 </div>
             </div>
