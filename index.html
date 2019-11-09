@@ -28,8 +28,29 @@
                 let trackName = songData.voices[i] + "Track"
                 let track = "/MP3/" + song + "/" + songData.voices[i] + ".mp3"
                 trackList.push(track);
-                let audio = new Howl({src: [track]});
-                var nextTrack = new Howl({src: [track]})
+                var nextTrack = new Howl({
+                    src: [track],
+                    onplay: function(){
+                        console.log("playing");
+                        document.getElementById("starter").disabled = true;
+                        document.getElementById("starter").innerHTML = "playing";
+                    },
+                    onpause: function(){
+                        console.log("paused");
+                        document.getElementById("starter").disabled = false;
+                        document.getElementById("starter").innerHTML = "play";
+                    },
+                    onstop: function(){
+                        console.log("stopped");
+                        document.getElementById("starter").disabled = false;
+                        document.getElementById("starter").innerHTML = "play";
+                    },
+                    onend: function(){
+                        console.log("done");
+                        document.getElementById("starter").disabled = false;
+                        document.getElementById("starter").innerHTML = "play";
+                    },
+                })
                 console.log(track)
                 audioTrack.push(nextTrack);
                 console.log(track);
