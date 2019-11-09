@@ -20,6 +20,7 @@
             document.getElementById("loaderIndicator").style.visibility = "hidden";
             var songData = library[song];
             var trackList = [];
+            audioTrack = [];
             let tracktitles = document.getElementById('trackTitle1');
             let gaincontrols = document.getElementById('trackVol1');
             tracktitles.innerHTML = "";
@@ -153,7 +154,7 @@
                 <div id="PlayerTitle">
                     Songs:<br>
                 </div>
-            	<select id="SongListDropDown" class="selectInput" onchange="init(this.value); loadPDF(this.value)">
+            	<select id="SongListDropDown" class="selectInput" onchange="stopPlay(); init(this.value); loadPDF(this.value)">
             	</select>
             	<br>
                 <div id="songTitle1" class="songTitles">
