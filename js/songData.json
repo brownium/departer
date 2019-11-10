@@ -381,6 +381,16 @@ library = {
         ],
         "pdf": "SoldiersOfChristArise4Parts_Score.pdf"
     },
+    "Still": {
+        "name": "Still, Still, Still",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "Still.pdf"
+    },
     "TheDayOfTheResurrection": {
         "name": "The Day of the Resurrection",
         "voices": [
