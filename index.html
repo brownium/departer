@@ -12,6 +12,7 @@
         var mainGain;
         var trackGain = [];
         var audioTrack = [];
+        var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
         function init(song) {
             document.getElementById("starter").style.visibility = "visible";
@@ -31,6 +32,7 @@
                 trackList.push(track);
                 var nextTrack = new Howl({
                     src: [track],
+                    html5: iOS,
                     onplay: function(){
                         console.log("playing");
                         document.getElementById("starter").disabled = true;
@@ -65,8 +67,6 @@
                 gaincontrols.innerHTML += volControl;
 
             }
-            tracktitles.innerHTML += "Master Vol";
-            gaincontrols.innerHTML += '<input type="range" min="0" max="100" value="100" id="MainVol" class="levelSlider" onchange="changeVol(mainGain, this.value)">';
 
             console.log("loaded");
         }
@@ -133,17 +133,6 @@
 
         </script>
 
-        <script>
-
-            var vol = 1
-
-            var audio_file = new Howl({
-                src: ['/MP3/AndCanItBe/Soprano.mp3', '/MP3/AndCanItBe/Alto.mp3'],
-                volume: vol
-            });
-        </script>
-
-
     </head>
     <body>
 	<div id="ads">
@@ -170,6 +159,7 @@
                     <button id="loaderIndicator" class="button">Loading Audio</button>
                     <button onclick="pausePlay()" id="pauser" class="button">pause</button>
                     <button onclick="stopPlay()" id="stopper" class="button">stop</button>
+                    <input type="range" min="0" [max]="maxValue" [(ngModel)]="value" (change)="change(value)" (input)="unsubscribe()">
                 </div>
             </div>
             <a id="ContactLink" href="mailto:brownium@gmail.com?subject=Octopod Player">Contact Us</a>
