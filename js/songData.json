@@ -341,6 +341,16 @@ library = {
         ],
         "pdf": "OnwardChristianSoldiers.pdf"
     },
+    "Sanctus": {
+        "name": "Sanctus",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "Sanctus.pdf"
+    },
     "SaviorLikeAShepherdLeadUs": {
         "name": "Savior Like A Shepherd Lead Us",
         "voices": [
