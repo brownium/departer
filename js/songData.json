@@ -431,6 +431,14 @@ library = {
         ],
         "pdf": "ThereIsAFountainFilledWithBlood.pdf"
     },
+    "TochterZionFreueDich": {
+        "name": "Tochter Zion Freue Dich",
+        "voices": [
+            "Soprano",
+            "Alto",
+        ],
+        "pdf": "TochterZionFreueDich.pdf"
+    },
     "WhenPeaceLikeARiver": {
         "name": "When Peace Like a River",
         "voices": [
