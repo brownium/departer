@@ -401,6 +401,14 @@ library = {
         ],
         "pdf": "Still.pdf"
     },
+    "Suesser": {
+        "name": "Suesser die Glocken nie Klingen",
+        "voices": [
+            "Soprano",
+            "Alto",
+        ],
+        "pdf": "Suesser.pdf"
+    },
     "TheDayOfTheResurrection": {
         "name": "The Day of the Resurrection",
         "voices": [
