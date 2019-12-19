@@ -4,16 +4,79 @@
     <meta charset="UTF-8">
     <title>tonlist</title>
 
+</head>
+<body>
+
+
+    <audio src="/MP3/DerSternZuBethlehem/Soprano.mp3" type="audio/mpeg" id="Track1""></audio>
+    <audio src="/MP3/DerSternZuBethlehem/Alto.mp3" type="audio/mpeg" id="Track2"></audio>
+    <audio src="/MP3/DerSternZuBethlehem/Tenor.mp3" type="audio/mpeg" id="Track3"></audio>
+    <audio src="/MP3/DerSternZuBethlehem/Bass.mp3" type="audio/mpeg" id="Track4"></audio>
+
+
+    <button data-playing="false" role="switch" aria-checked="false">
+        <span>Play/Pause</span>
+    </button>
+
     <script>
         // for legacy browsers
         const AudioContext = window.AudioContext || window.webkitAudioContext;
 
         const audioContext = new AudioContext();
 
-        <audio src="myCoolTrack.mp3" type="audio/mpeg"></audio>
+        const audioElement1 = document.getElementById('Track1');
+        const audioElement2 = document.getElementById('Track2');
+        const audioElement3 = document.getElementById('Track3');
+        const audioElement4 = document.getElementById('Track4');
+        const track1 = audioContext.createMediaElementSource(audioElement1);
+        const track2 = audioContext.createMediaElementSource(audioElement2);
+        const track3 = audioContext.createMediaElementSource(audioElement3);
+        const track4 = audioContext.createMediaElementSource(audioElement4);
+
+        track1.connect(audioContext.destination);
+        track2.connect(audioContext.destination);
+
+        const playButton = document.querySelector('button');
+
+        playButton.addEventListener('click', function() {
+
+            // check if context is in suspended state (autoplay policy)
+            if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+
+            // play or pause track depending on state
+            if (this.dataset.playing === 'false') {
+                audioElement1.play();
+                audioElement2.play();
+                audioElement3.play();
+                audioElement4.play();
+                this.dataset.playing = 'true';
+            } else if (this.dataset.playing === 'true') {
+                audioElement1.pause();
+                audioElement2.pause();
+                audioElement3.pause();
+                audioElement4.pause();
+                this.dataset.playing = 'false';
+            }
+
+        }, false);
+
+        audioElement1.addEventListener('ended', () => {
+            playButton.dataset.playing = 'false';
+        }, false);
+        audioElement2.addEventListener('ended', () => {
+            playButton.dataset.playing = 'false';
+        }, false);
+        audioElement3.addEventListener('ended', () => {
+            playButton.dataset.playing = 'false';
+        }, false);
+        audioElement4.addEventListener('ended', () => {
+            playButton.dataset.playing = 'false';
+        }, false);
+
+
     </script>
-</head>
-<body>
 
 </body>
 </html>

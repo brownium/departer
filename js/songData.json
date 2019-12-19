@@ -369,7 +369,7 @@ library = {
             "Tenor",
             "Bass"
         ],
-        "pdf": "SilentNight_Score.pdf"
+        "pdf": "SilentNight.pdf"
     },
     "SoftlyAndTenderly": {
         "name": "Softly and Tenderly",
@@ -390,6 +390,17 @@ library = {
             "Bass"
         ],
         "pdf": "SoldiersOfChristArise4Parts_Score.pdf"
+    },
+    "SongOfSimeon": {
+        "name": "Song of Simeon",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Baritone",
+            "Bass",
+            "Piano"
+        ],
+        "pdf": "SongOfSimeon.pdf"
     },
     "Still": {
         "name": "Still, Still, Still",
