@@ -222,6 +222,17 @@ library = {
         ],
         "pdf": "InTheSweetByAndBy.pdf"
     },
+    "JaegerChor": {
+        "name": "Jaeger-Chor",
+        "voices": [
+            "Tenor1",
+            "Tenor2",
+            "Bass1",
+            "Bass2",
+            "Choir"
+        ],
+        "pdf": "JaegerChor.pdf"
+    },
     "JoyToTheWorld": {
         "name": "Joy To The World",
         "voices": [
