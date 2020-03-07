@@ -229,7 +229,7 @@ library = {
             "Tenor2",
             "Bass1",
             "Bass2",
-            "Choir"
+            "Chor"
         ],
         "pdf": "JaegerChor.pdf"
     },
