@@ -1,0 +1,89 @@
+library = {
+    "DerSternZuBethlehem": {
+        "name": "Der Stern zu Bethlehem",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass",
+        ],
+        "pdf": "DerSternZuBethlehem.pdf"
+    },
+    "Frieden": {
+        "name": "Frieden",
+        "voices": [
+            "Tenor1",
+            "Tenor2",
+            "Baritone",
+            "Bass"
+        ],
+        "pdf": "Frieden.pdf"
+    },
+    "JaegerChor": {
+        "name": "Jaeger-Chor",
+        "voices": [
+            "Tenor1",
+            "Tenor2",
+            "Bass1",
+            "Bass2",
+            "Chor"
+        ],
+        "pdf": "JaegerChor.pdf"
+    },
+    "Sanctus": {
+        "name": "Sanctus",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "Sanctus.pdf"
+    },
+    "Still": {
+        "name": "Still, Still, Still",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "Still.pdf"
+    },
+    "Suesser": {
+        "name": "Suesser die Glocken nie Klingen",
+        "voices": [
+            "Soprano",
+            "Alto",
+        ],
+        "pdf": "Suesser.pdf"
+    },
+    "TochterZionFreueDich": {
+        "name": "Tochter Zion Freue Dich",
+        "voices": [
+            "Soprano",
+            "Alto",
+        ],
+        "pdf": "TochterZionFreueDich.pdf"
+    },
+    "WeihnachtenBinIchZuHaus": {
+        "name": "Weihnachten Bin Ich Zu Haus",
+        "voices": [
+            "Soprano",
+            "Alto",
+            "Tenor",
+            "Bass"
+        ],
+        "pdf": "WeihnachtenBinIchZuHaus.pdf"
+    },
+    "WeihnachtsgesangMitEcho": {
+        "name": "Weihnachtsgesang Mit Echo",
+        "voices": [
+            "Tenor1",
+            "Tenor2",
+            "Baritone",
+            "Bass"
+        ],
+        "pdf": "WeihnachtsgesangMitEcho.pdf"
+    },
+};
